@@ -1,8 +1,10 @@
 package com.example.twitterapp.twitter;
 
+import com.example.twitterapp.beans.SearchHistory;
 import org.json.JSONArray;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -28,4 +30,8 @@ public interface TweetAnalyzeService {
                                            JSONArray sortedHashtagsFrequency, JSONArray sortedMentionFrequency, JSONArray sortedAnnotationFrequency);
 
     public JSONArray map2JSONArray(Map<String, Integer> map);
+
+    public JSONObject mapHistory2JSON(ArrayList<SearchHistory> recentTweetHistory, ArrayList<SearchHistory> lookUpTweetHistory, ArrayList<SearchHistory> advancedTweetHistory );
+
+    public JSONArray extractHistory(ArrayList<SearchHistory> tweetSearchHistory);
 }

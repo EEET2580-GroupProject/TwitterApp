@@ -1,5 +1,6 @@
 package com.example.twitterapp.twitter;
 
+import com.example.twitterapp.beans.SearchHistory;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -274,5 +275,30 @@ public class TweetAnalyzeImpl implements TweetAnalyzeService{
         return jsonArray;
     }
 
+    @Override
+    public JSONObject mapHistory2JSON(ArrayList<SearchHistory> recentTweetHistory, ArrayList<SearchHistory> lookUpTweetHistory, ArrayList<SearchHistory> advancedTweetHistory) {
+        JSONArray recentHistory = extractHistory(recentTweetHistory);
+        JSONArray lookupHistory = extractHistory(lookUpTweetHistory);
+        JSONArray advancedHistory = extractHistory(advancedTweetHistory);
+        JSONObject result = new JSONObject();
+        result.put("recent_history", recentHistory);
+        result.put("lookup_history", lookupHistory);
+        result.put("advanced_history", advancedHistory);
+        return result;
+    }
 
+    @Override
+    public JSONArray extractHistory(ArrayList<SearchHistory> tweetSearchHistory) {
+        JSONArray historyArray = new JSONArray();
+        for (SearchHistory i: tweetSearchHistory){
+            JSONObject history = new JSONObject();
+            String dateTime = i.getDate_time().toString();
+            //System.out.println(dateTime);
+            history.put("date", dateTime.substring(0,dateTime.indexOf("T")));
+            history.put("time", dateTime.substring(dateTime.indexOf("T") +1,dateTime.length()));
+            history.put("search_term", i.getSearch_term());
+            historyArray.put(history);
+        }
+        return historyArray;
+    }
 }

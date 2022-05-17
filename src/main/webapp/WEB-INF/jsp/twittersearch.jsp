@@ -52,6 +52,52 @@
             advancedStyle.color = "white";
 
         }
+
+        function processHistory(){
+            let historyJson = ${historyData};
+            let lookupLen = historyJson.lookup_history.length;
+            for (let i = 0; i < lookupLen; i++){
+                let searchTerm = historyJson.lookup_history[i].search_term;
+                let date = historyJson.lookup_history[i].date;
+                let atTime = historyJson.lookup_history[i].time;
+                insertNewRow("lookup-history-table", searchTerm, date, atTime);
+            }
+
+            let recentLen = historyJson.recent_history.length;
+            for (let i = 0; i < recentLen; i++){
+                let searchTerm = historyJson.recent_history[i].search_term;
+                let date = historyJson.recent_history[i].date;
+                let atTime = historyJson.recent_history[i].time;
+                insertNewRow("recent-history-table", searchTerm, date, atTime);
+            }
+
+            let advancedLen = historyJson.advanced_history.length;
+            for (let i = 0; i < advancedLen; i++){
+                let searchTerm = historyJson.advanced_history[i].search_term;
+                let date = historyJson.advanced_history[i].date;
+                let atTime = historyJson.advanced_history[i].time;
+                insertNewRow("advanced-history-table", searchTerm, date, atTime);
+            }
+        }
+
+        function insertNewRow(tableId, term, date, time) {
+            let table = document.getElementById(tableId);
+            let row = table.insertRow(-1);
+            row.className = "history-row";
+            let termCell = row.insertCell(0);
+            let dateCell = row.insertCell(1);
+            let timeCell = row.insertCell(2)
+
+            termCell.innerHTML = term;
+            dateCell.innerHTML = date;
+            timeCell.innerHTML = time;
+        }
+
+        document.addEventListener("DOMContentLoaded", function(){
+            let historyJson = ${historyData};
+            console.log(historyJson);
+            processHistory();
+        });
     </script>
     <style>
         #term-field{
@@ -144,7 +190,8 @@
             border: solid 1px black;
             width: 100%;
             margin: auto;
-            height: calc(50vh - 10px);
+            /*height: calc(50vh - 10px);*/
+            height: fit-content;
         }
         #main-items{
             margin-top: 10px;
@@ -176,6 +223,31 @@
             width: 80%;
             margin: auto;
         }
+
+
+        .history-container{
+            width: fit-content;
+            padding-left: 10px;
+            padding-right: 10px;
+            margin: 10px auto;
+
+        }
+        .history-row:nth-child(even){
+            background-color: #525E75;
+            color: white;
+
+        }
+        th,td{
+            width: 25%;
+            max-width: 40vw;
+            overflow:hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            border: #4B6587 1px solid;
+            border-collapse: collapse;
+        }
+
+
         #query-label{
             display: block;
         }
@@ -218,11 +290,18 @@
                     <span id="query-label">${query}</span>
                     <span>${report}</span>
                 </div>
+                <div class = "history-container">
+                    <table id="lookup-history-table">
+                        <tr class="history-row">
+                            <th>Search</th>
+                            <th>Date</th>
+                            <th>Time</th>
+                        </tr>
+                    </table>
+                </div>
             </div>
-
             <jsp:include page="../statichtml/recentTab.jsp"/>
             <jsp:include page= "../statichtml/advancedTab.jsp"/>
-
         </div>
     </div>
 </main>

@@ -21,4 +21,13 @@
         <span id="query-label">${query}</span>
         <span>${report}</span>
     </div>
+    <div class = "history-container">
+        <table id="recent-history-table">
+            <tr class="history-row">
+                <th>Search</th>
+                <th>Date</th>
+                <th>Time</th>
+            </tr>
+        </table>
+    </div>
 </div>

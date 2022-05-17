@@ -19,6 +19,7 @@ public class LoginController {
     @PostMapping("/loginuser")
     // what get sent through login is bounded to Login class
     public String login(@ModelAttribute("login") Login login, Model model){
+        System.out.println("print something" + login.getUsername());
         User user = userRepository.searchByName(login.getUsername());
         if(user==null){
             throw new ApplicationException("User not exits");       // When this is thrown, it will trigger the

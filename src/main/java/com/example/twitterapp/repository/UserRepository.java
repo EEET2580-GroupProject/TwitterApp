@@ -12,10 +12,4 @@ public interface UserRepository extends CrudRepository<User, Integer> {
     @Query("select u from User u where u.username = :name")
     User searchByName(@Param("name") String username);
 
-
-    User save(User user);
-
-    User findByUsername(String username);
-
-    User findByEmail(String email);
 }

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
 import java.net.URISyntaxException;
+import java.time.LocalDateTime;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.concurrent.Callable;
@@ -129,9 +130,13 @@ public class TwitterController {
                 history.setPort("twitter");
                 history.setUser_id(user.getId());
                 history.setSearch_term(search_term);
+                history.setSearch_type("stream");
+                LocalDateTime localDateTime = LocalDateTime.now();
+                history.setDate_time(localDateTime);
+                searchRepository.save(history);
+
                 model.addAttribute("query", "Query: "+ query.trim());
                 model.addAttribute("report", "Create rules successfully");
-                searchRepository.save(history);
             }else {
                 model.addAttribute("report", "Your query is invalid");
             }
@@ -140,7 +145,7 @@ public class TwitterController {
     }
 
     @GetMapping("/twitter/lookupTweet")
-    public Callable<String> lookUpTweet(@RequestParam(value = "q-ids") String ids, Model model, @SessionAttribute("login") Login login){
+    public Callable<String> lookUpTweet(@RequestParam(value = "q-ids") String ids, Model model, @SessionAttribute("login") Login login, SearchHistory history){
         User user = userRepository.searchByName(login.getUsername());
         model.addAttribute("username",user.getUsername());
         return ()->{
@@ -156,13 +161,21 @@ public class TwitterController {
             }catch (Exception e){
                 e.printStackTrace();
             }
+            history.setPort("twitter");
+            history.setUser_id(user.getId());
+            history.setSearch_term(ids);
+            history.setSearch_type("lookup");
+            LocalDateTime localDateTime = LocalDateTime.now();
+            history.setDate_time(localDateTime);
+            searchRepository.save(history);
+
             model.addAttribute("data",jsonObject);
             return "twitterapi";
         };
     }
 
     @GetMapping("/twitter/getRecent")
-    public Callable<String> getRecent(@RequestParam(value = "q-query") String query, Model model, @SessionAttribute("login") Login login){
+    public Callable<String> getRecent(@RequestParam(value = "q-query") String query, Model model, @SessionAttribute("login") Login login, SearchHistory history){
         User user = userRepository.searchByName(login.getUsername());
         model.addAttribute("username",user.getUsername());
         return ()->{
@@ -178,12 +191,19 @@ public class TwitterController {
                     model.addAttribute("report","No tweet found");
                     return "twittersearch";
                 }
-
             }catch (Exception e){
                 e.printStackTrace();
                 model.addAttribute("report","Your request is error");
                 return "twittersearch";
             }
+            history.setPort("twitter");
+            history.setUser_id(user.getId());
+            history.setSearch_term(query);
+            history.setSearch_type("recent");
+            LocalDateTime localDateTime = LocalDateTime.now();
+            history.setDate_time(localDateTime);
+            searchRepository.save(history);
+
             model.addAttribute("data",jsonObject);
             return "twitterapi";
         };
