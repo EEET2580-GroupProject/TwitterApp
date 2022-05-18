@@ -173,13 +173,10 @@
                     <li class="icon-container"><a href="/twitter/resetrules">
                         <div><img id = "twiter-icon"class="icons" src="images/Icons/Twitter.png" alt="Twitter icon"></div>
                     </a></li>
-                    <li class="icon-container"><a href="/reddit">
+                    <li class="icon-container"><a href="https://social-hearing.netlify.app/public/login">
                         <div><img id = "reddit-icon"class ="icons" src="images/Icons/Reddit.jpg" alt="Twitter icon"></div>
                     </a></li>
-                    <li class="icon-container"><a href="">
-                        <div><img id = "google-icon" class ="icons" src="images/Icons/Google.png" alt="Twitter icon"></div>
-                    </a></li>
-                    <li class="icon-container"><a href="">
+                    <li class="icon-container"><a href="https://social-hearing.netlify.app/public/login">
                         <div><img id = "crypto-icon" class ="icons" src="images/Icons/btg.png" alt="Twitter icon"></div>
                     </a></li>
                 </ul>

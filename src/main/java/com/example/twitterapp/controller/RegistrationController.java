@@ -27,8 +27,13 @@ public class RegistrationController {
         if(bindingResult.hasErrors()){
             return "register";
         }
-        userRepository.save(user);
-        model.addAttribute("dataSaved", "Yo data has been saved");
+        try {
+            userRepository.save(user);
+        }catch (Exception e){
+            model.addAttribute("warning", "Email already registerd");
+            return "register";
+        }
+        model.addAttribute("dataSaved", "Data has been saved");
         return "login";  // After registration redirect the user back to the login page
     }
 }

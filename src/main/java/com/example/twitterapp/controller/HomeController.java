@@ -61,8 +61,8 @@ public class HomeController {
         System.out.println("Twitter reset");
         System.out.println("Deleted all rules");
         tweetSearchService.deleteAllRules();
-        User user = userRepository.searchByName(login.getUsername());
-        model.addAttribute("username",user.getUsername());
+        User user = userRepository.searchByName(login.getEmail());
+        model.addAttribute("username",user.getEmail());
 
 
         ArrayList<SearchHistory> recentTweetHistory = searchRepository.searchHistoriesByID("recent", user.getId());
@@ -79,8 +79,8 @@ public class HomeController {
     public String goToTwitterAPI(Model model, @SessionAttribute("login") Login login, SearchHistory history) throws URISyntaxException, IOException {
 
         try {
-            User user = userRepository.searchByName(login.getUsername());
-            model.addAttribute("username",user.getUsername());
+            User user = userRepository.searchByName(login.getEmail());
+            model.addAttribute("username",user.getEmail());
 
             ArrayList<SearchHistory> recentTweetHistory = searchRepository.searchHistoriesByID("recent", user.getId());
             ArrayList<SearchHistory> lookUpTweetHistory = searchRepository.searchHistoriesByID("lookup",user.getId());

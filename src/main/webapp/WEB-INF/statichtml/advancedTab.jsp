@@ -254,8 +254,8 @@
         </div>
     </div>
     <div id="nortification">
-        <span id="query-label">${query}</span>
-        <span>${report}</span>
+        <span style="color: #d14348" id="query-label">${query}</span>
+        <span style="color: #d14348">${report}</span>
     </div>
     <div class = "history-container">
         <table id="advanced-history-table">

@@ -352,6 +352,11 @@
     </script>
 
     <style>
+        .special{
+            border: black solid 1px;
+            border-radius: 10px;
+            background-color: #a6b7c5;
+        }
         .chart{
             min-width: 350px;
         }
@@ -381,6 +386,28 @@
         .canvas-container{
             overflow: auto;
             max-height: 500px;
+
+        }
+        #trackChart{
+
+        }
+        #chart-container5{
+
+        }
+        #main-trackChart-container{
+            width: fit-content;
+            margin: auto;
+            margin-top: 10px;
+        }
+        .decorate-container{
+            padding: 10px;
+            border: black 1px solid;
+            border-radius: 10px;
+            background-color: #a6b7c5;
+        }
+        main{
+            background-color: #F0E5CF;
+            height: 100vh;
         }
     </style>
 
@@ -394,59 +421,67 @@
             <div id="charts">
                 <div class="row">
                     <div class="col-sm-6 col-xl-3 canvas-container">
-                        <select id="mychart-dropdown" onchange="selectChart('domain_frequency',value,'myChart','chart1-table')">
-                            <option value="doughnut" >Doughnut</option>
-                            <option value="polarArea"> Polar Area</option>
-                            <option value="radar">Radar</option>
-                            <option value="wordCloud">WordCloud</option>
-                            <option value="raw">Raw</option>
-                            <option selected hidden>Select chart</option>
-                        </select>
-                        <table id="chart1-table" class="chart-table"></table>
-                        <div id = "chart-container1" class="chart" style="position: relative;">
-                            <canvas id="myChart"></canvas>
+                        <div class="decorate-container">
+                            <select id="mychart-dropdown" onchange="selectChart('domain_frequency',value,'myChart','chart1-table')">
+                                <option value="doughnut" >Doughnut</option>
+                                <option value="polarArea"> Polar Area</option>
+                                <option value="radar">Radar</option>
+                                <option value="wordCloud">WordCloud</option>
+                                <option value="raw">Raw</option>
+                                <option selected hidden>Select chart</option>
+                            </select>
+                            <table id="chart1-table" class="chart-table"></table>
+                            <div id = "chart-container1" class="chart" style="position: relative;">
+                                <canvas id="myChart"></canvas>
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-6 col-xl-3 canvas-container">
-                        <select id="mychart2-dropdown" onchange="selectChart('entity_frequency',value,'myChart2','chart2-table')">
-                            <option value="doughnut" >Doughnut</option>
-                            <option value="polarArea"> Polar Area</option>
-                            <option value="radar">Radar</option>
-                            <option value="wordCloud">WordCloud</option>
-                            <option value="raw">Raw</option>
-                            <option selected hidden>Select chart</option>
-                        </select>
-                        <table id="chart2-table" class="chart-table"></table>
-                        <div id = "chart-container2" class="chart" style="position: relative;">
-                            <canvas id="myChart2"></canvas>
+                        <div class="decorate-container">
+                            <select id="mychart2-dropdown" onchange="selectChart('entity_frequency',value,'myChart2','chart2-table')">
+                                <option value="doughnut" >Doughnut</option>
+                                <option value="polarArea"> Polar Area</option>
+                                <option value="radar">Radar</option>
+                                <option value="wordCloud">WordCloud</option>
+                                <option value="raw">Raw</option>
+                                <option selected hidden>Select chart</option>
+                            </select>
+                            <table id="chart2-table" class="chart-table"></table>
+                            <div id = "chart-container2" class="chart" style="position: relative;">
+                                <canvas id="myChart2"></canvas>
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-6 col-xl-3 canvas-container">
-                        <select id="mychart3-dropdown" onchange="selectChart('hashtag_frequency',value,'myChart3','chart3-table')">
-                            <option value="doughnut" >Doughnut</option>
-                            <option value="polarArea"> Polar Area</option>
-                            <option value="radar">Radar</option>
-                            <option value="wordCloud">WordCloud</option>
-                            <option value="raw">Raw</option>
-                            <option selected hidden>Select chart</option>
-                        </select>
-                        <table id="chart3-table" class="chart-table"></table>
-                        <div id = "chart-container3" class="chart" style="position: relative;">
-                            <canvas id="myChart3"></canvas>
+                        <div class="decorate-container">
+                            <select id="mychart3-dropdown" onchange="selectChart('hashtag_frequency',value,'myChart3','chart3-table')">
+                                <option value="doughnut" >Doughnut</option>
+                                <option value="polarArea"> Polar Area</option>
+                                <option value="radar">Radar</option>
+                                <option value="wordCloud">WordCloud</option>
+                                <option value="raw">Raw</option>
+                                <option selected hidden>Select chart</option>
+                            </select>
+                            <table id="chart3-table" class="chart-table"></table>
+                            <div id = "chart-container3" class="chart" style="position: relative;">
+                                <canvas id="myChart3"></canvas>
+                            </div>
                         </div>
                     </div>
                     <div class="col-sm-6 col-xl-3 canvas-container">
-                        <select id="mychart4-dropdown" onchange="selectChart('mention_frequency',value,'myChart4','chart4-table')">
-                            <option value="doughnut" >Doughnut</option>
-                            <option value="polarArea"> Polar Area</option>
-                            <option value="radar">Radar</option>
-                            <option value="wordCloud">WordCloud</option>
-                            <option value="raw">Raw</option>
-                            <option selected hidden>Select chart</option>
-                        </select>
-                        <table id="chart4-table" class="chart-table"></table>
-                        <div id = "chart-container4" class="chart" style="position: relative;">
-                            <canvas id="myChart4"></canvas>
+                        <div class="decorate-container">
+                            <select id="mychart4-dropdown" onchange="selectChart('mention_frequency',value,'myChart4','chart4-table')">
+                                <option value="doughnut" >Doughnut</option>
+                                <option value="polarArea"> Polar Area</option>
+                                <option value="radar">Radar</option>
+                                <option value="wordCloud">WordCloud</option>
+                                <option value="raw">Raw</option>
+                                <option selected hidden>Select chart</option>
+                            </select>
+                            <table id="chart4-table" class="chart-table"></table>
+                            <div id = "chart-container4" class="chart" style="position: relative;">
+                                <canvas id="myChart4"></canvas>
+                            </div>
                         </div>
                     </div>
                 </div>

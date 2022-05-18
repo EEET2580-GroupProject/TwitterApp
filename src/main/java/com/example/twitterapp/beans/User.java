@@ -1,5 +1,7 @@
 package com.example.twitterapp.beans;
 
+import org.hibernate.validator.constraints.UniqueElements;
+
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
@@ -15,7 +17,7 @@ public class User {
     private int user_id;
 
     //This validation is for severside
-    @Size(min=6, message = "{username.not.empty}")  // fetch errors from validationMessages.properties
+    @Size(min=6, message = "Username length must greater or equal to 6 character")  // fetch errors from validationMessages.properties
     private String username;
 
     //Use this expression for other project
@@ -27,8 +29,8 @@ public class User {
     private Gender gender;
 
 
-    private String first_name;
-    private String last_name;
+    private String firstName;
+    private String lastName;
 
     @Column(name = "email")
     @NotEmpty(message = "Email can't be empty")
@@ -73,19 +75,19 @@ public class User {
 
 
     public String getFirstName() {
-        return first_name;
+        return firstName;
     }
 
     public void setFirstName(String firstName) {
-        this.first_name = first_name;
+        this.firstName = firstName;
     }
 
     public String getLastName() {
-        return last_name;
+        return lastName;
     }
 
     public void setLastName(String lastName) {
-        this.last_name = last_name;
+        this.lastName = lastName;
     }
 
 

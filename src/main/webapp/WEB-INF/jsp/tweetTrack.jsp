@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -146,7 +147,7 @@
 
         function drawFrequency(frequency, chartType, chartID){
             try {
-                let data = ${data};
+                let data = {"hashtag_frequency":[],"mention_frequency":[],"sorted_tweet":[{"referenced_tweets":[{"id":"1526340064388734977","type":"replied_to"}],"entities":{"mentions":[{"start":0,"end":13,"id":"15212187","username":"bennyjohnson"}]},"possibly_sensitive":false,"public_metrics":{"like_count":108849,"reply_count":7728,"quote_count":834,"retweet_count":7937},"created_at":"2022-05-17T18:50:47.000Z","id":"1526636363906437120","text":"@bennyjohnson Is this legit?","author_id":"44196397","context_annotations":[{"domain":{"name":"Person","description":"Named people in the world like Nelson Mandela","id":"10"},"entity":{"name":"Benny Johnson","description":"an American political columnist","id":"1161228571869736961"}},{"domain":{"name":"Person","description":"Named people in the world like Nelson Mandela","id":"10"},"entity":{"name":"Elon Musk","description":"Elon Musk","id":"808713037230157824"}},{"domain":{"name":"Interests and Hobbies Vertical","description":"Top level interests and hobbies groupings, like Food or Travel","id":"65"},"entity":{"name":"Business & finance","id":"781974596148793345"}},{"domain":{"name":"Interests and Hobbies Category","description":"A grouping of interests and hobbies entities, like Novelty Food or Destinations","id":"66"},"entity":{"name":"Leadership","description":"Leadership","id":"857878777191211008"}},{"domain":{"name":"Entities [Entity Service]","description":"Entity Service top level domain, every item that is in Entity Service should be in this domain","id":"30"},"entity":{"name":"Technology","description":"Technology","id":"857879456773357569"}}]},{"entities":{"annotations":[{"probability":0.4922,"start":0,"normalized_text":"Twitter","end":6,"type":"Product"}]},"possibly_sensitive":false,"public_metrics":{"like_count":90950,"reply_count":27968,"quote_count":3016,"retweet_count":12990},"created_at":"2022-05-17T16:21:33.000Z","id":"1526598807722549248","text":"Twitter claims that &gt;95% of daily active users are real, unique humans. Does anyone have that experience?","author_id":"44196397","context_annotations":[{"domain":{"name":"Person","description":"Named people in the world like Nelson Mandela","id":"10"},"entity":{"name":"Elon Musk","description":"Elon Musk","id":"808713037230157824"}},{"domain":{"name":"Brand Category","description":"Categories within Brand Verticals that narrow down the scope of Brands","id":"46"},"entity":{"name":"Services","id":"781974596752842752"}},{"domain":{"name":"Brand","description":"Brands and Companies","id":"47"},"entity":{"name":"Twitter","id":"10045225402"}},{"domain":{"name":"Interests and Hobbies Vertical","description":"Top level interests and hobbies groupings, like Food or Travel","id":"65"},"entity":{"name":"Business & finance","id":"781974596148793345"}},{"domain":{"name":"Interests and Hobbies Category","description":"A grouping of interests and hobbies entities, like Novelty Food or Destinations","id":"66"},"entity":{"name":"Leadership","description":"Leadership","id":"857878777191211008"}},{"domain":{"name":"Entities [Entity Service]","description":"Entity Service top level domain, every item that is in Entity Service should be in this domain","id":"30"},"entity":{"name":"Technology","description":"Technology","id":"857879456773357569"}}]}],"max_metrics":{"max_retweet":12990,"max_reply":27968,"max_like":108849},"domain_frequency":[{"attribute":{"Person":3}},{"attribute":{"Entities [Entity Service]":2}},{"attribute":{"Interests and Hobbies Vertical":2}},{"attribute":{"Interests and Hobbies Category":2}},{"attribute":{"Brand":1}},{"attribute":{"Brand Category":1}}],"annotation_frequency":[],"entity_frequency":[{"attribute":{"Leadership":2}},{"attribute":{"Technology":2}},{"attribute":{"Elon Musk":2}},{"attribute":{"Business & finance":2}},{"attribute":{"Services":1}},{"attribute":{"Twitter":1}},{"attribute":{"Benny Johnson":1}}]};
                 let labels = [];
                 let values = [];
 
@@ -277,7 +278,7 @@
             nameCell.innerHTML = dataType.charAt(0).toUpperCase() + dataType.slice(1);
             frequencyCell.innerHTML = "Frequency";
 
-            let data = ${data};
+            let data = {"hashtag_frequency":[],"mention_frequency":[],"sorted_tweet":[{"referenced_tweets":[{"id":"1526340064388734977","type":"replied_to"}],"entities":{"mentions":[{"start":0,"end":13,"id":"15212187","username":"bennyjohnson"}]},"possibly_sensitive":false,"public_metrics":{"like_count":108849,"reply_count":7728,"quote_count":834,"retweet_count":7937},"created_at":"2022-05-17T18:50:47.000Z","id":"1526636363906437120","text":"@bennyjohnson Is this legit?","author_id":"44196397","context_annotations":[{"domain":{"name":"Person","description":"Named people in the world like Nelson Mandela","id":"10"},"entity":{"name":"Benny Johnson","description":"an American political columnist","id":"1161228571869736961"}},{"domain":{"name":"Person","description":"Named people in the world like Nelson Mandela","id":"10"},"entity":{"name":"Elon Musk","description":"Elon Musk","id":"808713037230157824"}},{"domain":{"name":"Interests and Hobbies Vertical","description":"Top level interests and hobbies groupings, like Food or Travel","id":"65"},"entity":{"name":"Business & finance","id":"781974596148793345"}},{"domain":{"name":"Interests and Hobbies Category","description":"A grouping of interests and hobbies entities, like Novelty Food or Destinations","id":"66"},"entity":{"name":"Leadership","description":"Leadership","id":"857878777191211008"}},{"domain":{"name":"Entities [Entity Service]","description":"Entity Service top level domain, every item that is in Entity Service should be in this domain","id":"30"},"entity":{"name":"Technology","description":"Technology","id":"857879456773357569"}}]},{"entities":{"annotations":[{"probability":0.4922,"start":0,"normalized_text":"Twitter","end":6,"type":"Product"}]},"possibly_sensitive":false,"public_metrics":{"like_count":90950,"reply_count":27968,"quote_count":3016,"retweet_count":12990},"created_at":"2022-05-17T16:21:33.000Z","id":"1526598807722549248","text":"Twitter claims that &gt;95% of daily active users are real, unique humans. Does anyone have that experience?","author_id":"44196397","context_annotations":[{"domain":{"name":"Person","description":"Named people in the world like Nelson Mandela","id":"10"},"entity":{"name":"Elon Musk","description":"Elon Musk","id":"808713037230157824"}},{"domain":{"name":"Brand Category","description":"Categories within Brand Verticals that narrow down the scope of Brands","id":"46"},"entity":{"name":"Services","id":"781974596752842752"}},{"domain":{"name":"Brand","description":"Brands and Companies","id":"47"},"entity":{"name":"Twitter","id":"10045225402"}},{"domain":{"name":"Interests and Hobbies Vertical","description":"Top level interests and hobbies groupings, like Food or Travel","id":"65"},"entity":{"name":"Business & finance","id":"781974596148793345"}},{"domain":{"name":"Interests and Hobbies Category","description":"A grouping of interests and hobbies entities, like Novelty Food or Destinations","id":"66"},"entity":{"name":"Leadership","description":"Leadership","id":"857878777191211008"}},{"domain":{"name":"Entities [Entity Service]","description":"Entity Service top level domain, every item that is in Entity Service should be in this domain","id":"30"},"entity":{"name":"Technology","description":"Technology","id":"857879456773357569"}}]}],"max_metrics":{"max_retweet":12990,"max_reply":27968,"max_like":108849},"domain_frequency":[{"attribute":{"Person":3}},{"attribute":{"Entities [Entity Service]":2}},{"attribute":{"Interests and Hobbies Vertical":2}},{"attribute":{"Interests and Hobbies Category":2}},{"attribute":{"Brand":1}},{"attribute":{"Brand Category":1}}],"annotation_frequency":[],"entity_frequency":[{"attribute":{"Leadership":2}},{"attribute":{"Technology":2}},{"attribute":{"Elon Musk":2}},{"attribute":{"Business & finance":2}},{"attribute":{"Services":1}},{"attribute":{"Twitter":1}},{"attribute":{"Benny Johnson":1}}]};
             for(let i = 0; i < data[dataType].length; i++){
                 let dataRow = table.insertRow(-1);
                 let nameCell = dataRow.insertCell(0);
@@ -317,7 +318,7 @@
 
             //likeCell.innerHTML = like;
 
-            let data = ${data};
+            let data = {"hashtag_frequency":[],"mention_frequency":[],"sorted_tweet":[{"referenced_tweets":[{"id":"1526340064388734977","type":"replied_to"}],"entities":{"mentions":[{"start":0,"end":13,"id":"15212187","username":"bennyjohnson"}]},"possibly_sensitive":false,"public_metrics":{"like_count":108849,"reply_count":7728,"quote_count":834,"retweet_count":7937},"created_at":"2022-05-17T18:50:47.000Z","id":"1526636363906437120","text":"@bennyjohnson Is this legit?","author_id":"44196397","context_annotations":[{"domain":{"name":"Person","description":"Named people in the world like Nelson Mandela","id":"10"},"entity":{"name":"Benny Johnson","description":"an American political columnist","id":"1161228571869736961"}},{"domain":{"name":"Person","description":"Named people in the world like Nelson Mandela","id":"10"},"entity":{"name":"Elon Musk","description":"Elon Musk","id":"808713037230157824"}},{"domain":{"name":"Interests and Hobbies Vertical","description":"Top level interests and hobbies groupings, like Food or Travel","id":"65"},"entity":{"name":"Business & finance","id":"781974596148793345"}},{"domain":{"name":"Interests and Hobbies Category","description":"A grouping of interests and hobbies entities, like Novelty Food or Destinations","id":"66"},"entity":{"name":"Leadership","description":"Leadership","id":"857878777191211008"}},{"domain":{"name":"Entities [Entity Service]","description":"Entity Service top level domain, every item that is in Entity Service should be in this domain","id":"30"},"entity":{"name":"Technology","description":"Technology","id":"857879456773357569"}}]},{"entities":{"annotations":[{"probability":0.4922,"start":0,"normalized_text":"Twitter","end":6,"type":"Product"}]},"possibly_sensitive":false,"public_metrics":{"like_count":90950,"reply_count":27968,"quote_count":3016,"retweet_count":12990},"created_at":"2022-05-17T16:21:33.000Z","id":"1526598807722549248","text":"Twitter claims that &gt;95% of daily active users are real, unique humans. Does anyone have that experience?","author_id":"44196397","context_annotations":[{"domain":{"name":"Person","description":"Named people in the world like Nelson Mandela","id":"10"},"entity":{"name":"Elon Musk","description":"Elon Musk","id":"808713037230157824"}},{"domain":{"name":"Brand Category","description":"Categories within Brand Verticals that narrow down the scope of Brands","id":"46"},"entity":{"name":"Services","id":"781974596752842752"}},{"domain":{"name":"Brand","description":"Brands and Companies","id":"47"},"entity":{"name":"Twitter","id":"10045225402"}},{"domain":{"name":"Interests and Hobbies Vertical","description":"Top level interests and hobbies groupings, like Food or Travel","id":"65"},"entity":{"name":"Business & finance","id":"781974596148793345"}},{"domain":{"name":"Interests and Hobbies Category","description":"A grouping of interests and hobbies entities, like Novelty Food or Destinations","id":"66"},"entity":{"name":"Leadership","description":"Leadership","id":"857878777191211008"}},{"domain":{"name":"Entities [Entity Service]","description":"Entity Service top level domain, every item that is in Entity Service should be in this domain","id":"30"},"entity":{"name":"Technology","description":"Technology","id":"857879456773357569"}}]}],"max_metrics":{"max_retweet":12990,"max_reply":27968,"max_like":108849},"domain_frequency":[{"attribute":{"Person":3}},{"attribute":{"Entities [Entity Service]":2}},{"attribute":{"Interests and Hobbies Vertical":2}},{"attribute":{"Interests and Hobbies Category":2}},{"attribute":{"Brand":1}},{"attribute":{"Brand Category":1}}],"annotation_frequency":[],"entity_frequency":[{"attribute":{"Leadership":2}},{"attribute":{"Technology":2}},{"attribute":{"Elon Musk":2}},{"attribute":{"Business & finance":2}},{"attribute":{"Services":1}},{"attribute":{"Twitter":1}},{"attribute":{"Benny Johnson":1}}]};
             maxLike = data.max_metrics.max_like;
             likePercentage = Math.floor((like/ maxLike) *100);
 
@@ -360,7 +361,7 @@
                 '</nav>';
             document.querySelector("#tweet-pagination").innerHTML = pagination;
 
-            let data = ${data};
+            let data = {"hashtag_frequency":[],"mention_frequency":[],"sorted_tweet":[{"referenced_tweets":[{"id":"1526340064388734977","type":"replied_to"}],"entities":{"mentions":[{"start":0,"end":13,"id":"15212187","username":"bennyjohnson"}]},"possibly_sensitive":false,"public_metrics":{"like_count":108849,"reply_count":7728,"quote_count":834,"retweet_count":7937},"created_at":"2022-05-17T18:50:47.000Z","id":"1526636363906437120","text":"@bennyjohnson Is this legit?","author_id":"44196397","context_annotations":[{"domain":{"name":"Person","description":"Named people in the world like Nelson Mandela","id":"10"},"entity":{"name":"Benny Johnson","description":"an American political columnist","id":"1161228571869736961"}},{"domain":{"name":"Person","description":"Named people in the world like Nelson Mandela","id":"10"},"entity":{"name":"Elon Musk","description":"Elon Musk","id":"808713037230157824"}},{"domain":{"name":"Interests and Hobbies Vertical","description":"Top level interests and hobbies groupings, like Food or Travel","id":"65"},"entity":{"name":"Business & finance","id":"781974596148793345"}},{"domain":{"name":"Interests and Hobbies Category","description":"A grouping of interests and hobbies entities, like Novelty Food or Destinations","id":"66"},"entity":{"name":"Leadership","description":"Leadership","id":"857878777191211008"}},{"domain":{"name":"Entities [Entity Service]","description":"Entity Service top level domain, every item that is in Entity Service should be in this domain","id":"30"},"entity":{"name":"Technology","description":"Technology","id":"857879456773357569"}}]},{"entities":{"annotations":[{"probability":0.4922,"start":0,"normalized_text":"Twitter","end":6,"type":"Product"}]},"possibly_sensitive":false,"public_metrics":{"like_count":90950,"reply_count":27968,"quote_count":3016,"retweet_count":12990},"created_at":"2022-05-17T16:21:33.000Z","id":"1526598807722549248","text":"Twitter claims that &gt;95% of daily active users are real, unique humans. Does anyone have that experience?","author_id":"44196397","context_annotations":[{"domain":{"name":"Person","description":"Named people in the world like Nelson Mandela","id":"10"},"entity":{"name":"Elon Musk","description":"Elon Musk","id":"808713037230157824"}},{"domain":{"name":"Brand Category","description":"Categories within Brand Verticals that narrow down the scope of Brands","id":"46"},"entity":{"name":"Services","id":"781974596752842752"}},{"domain":{"name":"Brand","description":"Brands and Companies","id":"47"},"entity":{"name":"Twitter","id":"10045225402"}},{"domain":{"name":"Interests and Hobbies Vertical","description":"Top level interests and hobbies groupings, like Food or Travel","id":"65"},"entity":{"name":"Business & finance","id":"781974596148793345"}},{"domain":{"name":"Interests and Hobbies Category","description":"A grouping of interests and hobbies entities, like Novelty Food or Destinations","id":"66"},"entity":{"name":"Leadership","description":"Leadership","id":"857878777191211008"}},{"domain":{"name":"Entities [Entity Service]","description":"Entity Service top level domain, every item that is in Entity Service should be in this domain","id":"30"},"entity":{"name":"Technology","description":"Technology","id":"857879456773357569"}}]}],"max_metrics":{"max_retweet":12990,"max_reply":27968,"max_like":108849},"domain_frequency":[{"attribute":{"Person":3}},{"attribute":{"Entities [Entity Service]":2}},{"attribute":{"Interests and Hobbies Vertical":2}},{"attribute":{"Interests and Hobbies Category":2}},{"attribute":{"Brand":1}},{"attribute":{"Brand Category":1}}],"annotation_frequency":[],"entity_frequency":[{"attribute":{"Leadership":2}},{"attribute":{"Technology":2}},{"attribute":{"Elon Musk":2}},{"attribute":{"Business & finance":2}},{"attribute":{"Services":1}},{"attribute":{"Twitter":1}},{"attribute":{"Benny Johnson":1}}]};
             let dataSize = data.sorted_tweet.length;
             let pageNum = (dataSize / 10) + 1;
 
@@ -395,7 +396,7 @@
 
         function dynamicTableInsert(index){
             try{
-                let data = ${data};
+                let data = {"hashtag_frequency":[],"mention_frequency":[],"sorted_tweet":[{"referenced_tweets":[{"id":"1526340064388734977","type":"replied_to"}],"entities":{"mentions":[{"start":0,"end":13,"id":"15212187","username":"bennyjohnson"}]},"possibly_sensitive":false,"public_metrics":{"like_count":108849,"reply_count":7728,"quote_count":834,"retweet_count":7937},"created_at":"2022-05-17T18:50:47.000Z","id":"1526636363906437120","text":"@bennyjohnson Is this legit?","author_id":"44196397","context_annotations":[{"domain":{"name":"Person","description":"Named people in the world like Nelson Mandela","id":"10"},"entity":{"name":"Benny Johnson","description":"an American political columnist","id":"1161228571869736961"}},{"domain":{"name":"Person","description":"Named people in the world like Nelson Mandela","id":"10"},"entity":{"name":"Elon Musk","description":"Elon Musk","id":"808713037230157824"}},{"domain":{"name":"Interests and Hobbies Vertical","description":"Top level interests and hobbies groupings, like Food or Travel","id":"65"},"entity":{"name":"Business & finance","id":"781974596148793345"}},{"domain":{"name":"Interests and Hobbies Category","description":"A grouping of interests and hobbies entities, like Novelty Food or Destinations","id":"66"},"entity":{"name":"Leadership","description":"Leadership","id":"857878777191211008"}},{"domain":{"name":"Entities [Entity Service]","description":"Entity Service top level domain, every item that is in Entity Service should be in this domain","id":"30"},"entity":{"name":"Technology","description":"Technology","id":"857879456773357569"}}]},{"entities":{"annotations":[{"probability":0.4922,"start":0,"normalized_text":"Twitter","end":6,"type":"Product"}]},"possibly_sensitive":false,"public_metrics":{"like_count":90950,"reply_count":27968,"quote_count":3016,"retweet_count":12990},"created_at":"2022-05-17T16:21:33.000Z","id":"1526598807722549248","text":"Twitter claims that &gt;95% of daily active users are real, unique humans. Does anyone have that experience?","author_id":"44196397","context_annotations":[{"domain":{"name":"Person","description":"Named people in the world like Nelson Mandela","id":"10"},"entity":{"name":"Elon Musk","description":"Elon Musk","id":"808713037230157824"}},{"domain":{"name":"Brand Category","description":"Categories within Brand Verticals that narrow down the scope of Brands","id":"46"},"entity":{"name":"Services","id":"781974596752842752"}},{"domain":{"name":"Brand","description":"Brands and Companies","id":"47"},"entity":{"name":"Twitter","id":"10045225402"}},{"domain":{"name":"Interests and Hobbies Vertical","description":"Top level interests and hobbies groupings, like Food or Travel","id":"65"},"entity":{"name":"Business & finance","id":"781974596148793345"}},{"domain":{"name":"Interests and Hobbies Category","description":"A grouping of interests and hobbies entities, like Novelty Food or Destinations","id":"66"},"entity":{"name":"Leadership","description":"Leadership","id":"857878777191211008"}},{"domain":{"name":"Entities [Entity Service]","description":"Entity Service top level domain, every item that is in Entity Service should be in this domain","id":"30"},"entity":{"name":"Technology","description":"Technology","id":"857879456773357569"}}]}],"max_metrics":{"max_retweet":12990,"max_reply":27968,"max_like":108849},"domain_frequency":[{"attribute":{"Person":3}},{"attribute":{"Entities [Entity Service]":2}},{"attribute":{"Interests and Hobbies Vertical":2}},{"attribute":{"Interests and Hobbies Category":2}},{"attribute":{"Brand":1}},{"attribute":{"Brand Category":1}}],"annotation_frequency":[],"entity_frequency":[{"attribute":{"Leadership":2}},{"attribute":{"Technology":2}},{"attribute":{"Elon Musk":2}},{"attribute":{"Business & finance":2}},{"attribute":{"Services":1}},{"attribute":{"Twitter":1}},{"attribute":{"Benny Johnson":1}}]};
                 let dataSize = data.sorted_tweet.length;
                 let pageNum = (dataSize / 10) + 1;
 
@@ -468,7 +469,7 @@
 
             let canvasContainer = document.createElement('div');
             canvasContainer.setAttribute('id', chartContainer);
-            canvasContainer.setAttribute('class', "chart");
+            canvasContainer.setAttribute('class', "chart special");
             canvasContainer.setAttribute('style', "position: relative;");
             canvasContainer.appendChild(canvas);
 
@@ -494,6 +495,7 @@
             wholeContainer.appendChild(inputTrackContainer);
             wholeContainer.appendChild(canvasContainer);
 
+
             chartArrayNumber.push(nextIndex);
             document.getElementById("dynamic-row").appendChild(wholeContainer);
         }
@@ -508,18 +510,9 @@
             document.getElementById(divID).remove();
 
         }
-        function resetCharts(){
-            myChart.update('reset');
-            myChart2.update('show');
-            myChart3.update('active');
-            drawFrequency('entity_frequency','doughnut', 'myChart2');
-            drawFrequency('hashtag_frequency', 'polarArea', 'myChart3');
-            drawFrequency('mention_frequency', 'polarArea', 'myChart4');
-            drawFrequency('domain_frequency', 'radar', 'myChart');
-        }
 
         document.addEventListener("DOMContentLoaded", function (){
-            console.log(${data});
+            console.log({"hashtag_frequency":[],"mention_frequency":[],"sorted_tweet":[{"referenced_tweets":[{"id":"1526340064388734977","type":"replied_to"}],"entities":{"mentions":[{"start":0,"end":13,"id":"15212187","username":"bennyjohnson"}]},"possibly_sensitive":false,"public_metrics":{"like_count":108849,"reply_count":7728,"quote_count":834,"retweet_count":7937},"created_at":"2022-05-17T18:50:47.000Z","id":"1526636363906437120","text":"@bennyjohnson Is this legit?","author_id":"44196397","context_annotations":[{"domain":{"name":"Person","description":"Named people in the world like Nelson Mandela","id":"10"},"entity":{"name":"Benny Johnson","description":"an American political columnist","id":"1161228571869736961"}},{"domain":{"name":"Person","description":"Named people in the world like Nelson Mandela","id":"10"},"entity":{"name":"Elon Musk","description":"Elon Musk","id":"808713037230157824"}},{"domain":{"name":"Interests and Hobbies Vertical","description":"Top level interests and hobbies groupings, like Food or Travel","id":"65"},"entity":{"name":"Business & finance","id":"781974596148793345"}},{"domain":{"name":"Interests and Hobbies Category","description":"A grouping of interests and hobbies entities, like Novelty Food or Destinations","id":"66"},"entity":{"name":"Leadership","description":"Leadership","id":"857878777191211008"}},{"domain":{"name":"Entities [Entity Service]","description":"Entity Service top level domain, every item that is in Entity Service should be in this domain","id":"30"},"entity":{"name":"Technology","description":"Technology","id":"857879456773357569"}}]},{"entities":{"annotations":[{"probability":0.4922,"start":0,"normalized_text":"Twitter","end":6,"type":"Product"}]},"possibly_sensitive":false,"public_metrics":{"like_count":90950,"reply_count":27968,"quote_count":3016,"retweet_count":12990},"created_at":"2022-05-17T16:21:33.000Z","id":"1526598807722549248","text":"Twitter claims that &gt;95% of daily active users are real, unique humans. Does anyone have that experience?","author_id":"44196397","context_annotations":[{"domain":{"name":"Person","description":"Named people in the world like Nelson Mandela","id":"10"},"entity":{"name":"Elon Musk","description":"Elon Musk","id":"808713037230157824"}},{"domain":{"name":"Brand Category","description":"Categories within Brand Verticals that narrow down the scope of Brands","id":"46"},"entity":{"name":"Services","id":"781974596752842752"}},{"domain":{"name":"Brand","description":"Brands and Companies","id":"47"},"entity":{"name":"Twitter","id":"10045225402"}},{"domain":{"name":"Interests and Hobbies Vertical","description":"Top level interests and hobbies groupings, like Food or Travel","id":"65"},"entity":{"name":"Business & finance","id":"781974596148793345"}},{"domain":{"name":"Interests and Hobbies Category","description":"A grouping of interests and hobbies entities, like Novelty Food or Destinations","id":"66"},"entity":{"name":"Leadership","description":"Leadership","id":"857878777191211008"}},{"domain":{"name":"Entities [Entity Service]","description":"Entity Service top level domain, every item that is in Entity Service should be in this domain","id":"30"},"entity":{"name":"Technology","description":"Technology","id":"857879456773357569"}}]}],"max_metrics":{"max_retweet":12990,"max_reply":27968,"max_like":108849},"domain_frequency":[{"attribute":{"Person":3}},{"attribute":{"Entities [Entity Service]":2}},{"attribute":{"Interests and Hobbies Vertical":2}},{"attribute":{"Interests and Hobbies Category":2}},{"attribute":{"Brand":1}},{"attribute":{"Brand Category":1}}],"annotation_frequency":[],"entity_frequency":[{"attribute":{"Leadership":2}},{"attribute":{"Technology":2}},{"attribute":{"Elon Musk":2}},{"attribute":{"Business & finance":2}},{"attribute":{"Services":1}},{"attribute":{"Twitter":1}},{"attribute":{"Benny Johnson":1}}]});
             //drawFrequency("entity_frequency", 'wordCloud', 'myChart');
             tweetTable();
             drawFrequency('entity_frequency','doughnut', 'myChart2');
@@ -527,13 +520,17 @@
             drawFrequency('mention_frequency', 'polarArea', 'myChart4');
             drawFrequency('domain_frequency', 'radar', 'myChart');
             pagination();
-            console.log(${oldTweets});
+            console.log([{"data":[{"date_time_pulled":"2022-05-18T09:01:59.378","data":{"like_count":73525,"reply_count":24567,"quote_count":2632,"retweet_count":10911}},{"date_time_pulled":"2022-05-18T09:03:24.092","data":{"like_count":73577,"reply_count":24574,"quote_count":2632,"retweet_count":10918}},{"date_time_pulled":"2022-05-18T09:03:31.925","data":{"like_count":73585,"reply_count":24576,"quote_count":2632,"retweet_count":10918}},{"date_time_pulled":"2022-05-18T09:03:36.021","data":{"like_count":73588,"reply_count":24576,"quote_count":2632,"retweet_count":10919}},{"date_time_pulled":"2022-05-18T09:12:27.806","data":{"like_count":73899,"reply_count":24651,"quote_count":2636,"retweet_count":10969}},{"date_time_pulled":"2022-05-18T09:19:26.661","data":{"like_count":74181,"reply_count":24713,"quote_count":2641,"retweet_count":11005}},{"date_time_pulled":"2022-05-18T10:47:18.696","data":{"like_count":77332,"reply_count":25378,"quote_count":2726,"retweet_count":11351}},{"date_time_pulled":"2022-05-18T10:49:12.961","data":{"like_count":77412,"reply_count":25410,"quote_count":2727,"retweet_count":11360}},{"date_time_pulled":"2022-05-18T10:53:16.047","data":{"like_count":77559,"reply_count":25442,"quote_count":2730,"retweet_count":11379}},{"date_time_pulled":"2022-05-18T10:55:11.390","data":{"like_count":77633,"reply_count":25462,"quote_count":2732,"retweet_count":11392}},{"date_time_pulled":"2022-05-18T10:55:20.074","data":{"like_count":77636,"reply_count":25463,"quote_count":2732,"retweet_count":11392}},{"date_time_pulled":"2022-05-18T10:58:14.125","data":{"like_count":77722,"reply_count":25486,"quote_count":2734,"retweet_count":11403}},{"date_time_pulled":"2022-05-18T11:00:45.018","data":{"like_count":77807,"reply_count":25482,"quote_count":2736,"retweet_count":11412}},{"date_time_pulled":"2022-05-18T11:03:57.606","data":{"like_count":77918,"reply_count":25527,"quote_count":2738,"retweet_count":11426}},{"date_time_pulled":"2022-05-18T11:06:19.331","data":{"like_count":77989,"reply_count":25525,"quote_count":2740,"retweet_count":11436}},{"date_time_pulled":"2022-05-18T11:07:45.614","data":{"like_count":78030,"reply_count":25535,"quote_count":2740,"retweet_count":11440}},{"date_time_pulled":"2022-05-18T11:09:08.343","data":{"like_count":78077,"reply_count":25559,"quote_count":2741,"retweet_count":11444}},{"date_time_pulled":"2022-05-18T11:10:29.765","data":{"like_count":78129,"reply_count":25571,"quote_count":2742,"retweet_count":11449}},{"date_time_pulled":"2022-05-18T11:14:34.285","data":{"like_count":78253,"reply_count":25569,"quote_count":2748,"retweet_count":11464}},{"date_time_pulled":"2022-05-18T11:19:51.518","data":{"like_count":78415,"reply_count":25607,"quote_count":2750,"retweet_count":11488}},{"date_time_pulled":"2022-05-18T11:20:15.758","data":{"like_count":78421,"reply_count":25631,"quote_count":2751,"retweet_count":11488}},{"date_time_pulled":"2022-05-18T11:22:51.398","data":{"like_count":78469,"reply_count":25636,"quote_count":2750,"retweet_count":11503}},{"date_time_pulled":"2022-05-18T11:24:26.534","data":{"like_count":78541,"reply_count":25670,"quote_count":2752,"retweet_count":11503}},{"date_time_pulled":"2022-05-18T11:26:48.299","data":{"like_count":78618,"reply_count":25680,"quote_count":2754,"retweet_count":11508}},{"date_time_pulled":"2022-05-18T11:32:56.907","data":{"like_count":78762,"reply_count":25714,"quote_count":2759,"retweet_count":11539}},{"date_time_pulled":"2022-05-18T11:34:22.310","data":{"like_count":78812,"reply_count":25728,"quote_count":2761,"retweet_count":11544}},{"date_time_pulled":"2022-05-18T11:36:06.449","data":{"like_count":78894,"reply_count":25750,"quote_count":2764,"retweet_count":11547}},{"date_time_pulled":"2022-05-18T11:37:22.053","data":{"like_count":78935,"reply_count":25759,"quote_count":2764,"retweet_count":11554}},{"date_time_pulled":"2022-05-18T11:40:10.828","data":{"like_count":79028,"reply_count":25777,"quote_count":2765,"retweet_count":11567}},{"date_time_pulled":"2022-05-18T12:03:05.421","data":{"like_count":79666,"reply_count":25905,"quote_count":2779,"retweet_count":11666}},{"date_time_pulled":"2022-05-18T12:05:18.875","data":{"like_count":79729,"reply_count":25924,"quote_count":2787,"retweet_count":11672}},{"date_time_pulled":"2022-05-18T12:14:35.220","data":{"like_count":80007,"reply_count":25986,"quote_count":2791,"retweet_count":11704}},{"date_time_pulled":"2022-05-18T12:16:19.978","data":{"like_count":80053,"reply_count":25992,"quote_count":2791,"retweet_count":11708}},{"date_time_pulled":"2022-05-18T12:19:41.233","data":{"like_count":80139,"reply_count":26013,"quote_count":2797,"retweet_count":11721}},{"date_time_pulled":"2022-05-18T12:22:31.478","data":{"like_count":80217,"reply_count":26025,"quote_count":2798,"retweet_count":11734}},{"date_time_pulled":"2022-05-18T12:25:15.060","data":{"like_count":80294,"reply_count":26035,"quote_count":2796,"retweet_count":11745}},{"date_time_pulled":"2022-05-18T12:32:18.893","data":{"like_count":80482,"reply_count":26068,"quote_count":2797,"retweet_count":11780}},{"date_time_pulled":"2022-05-18T12:34:24.863","data":{"like_count":80535,"reply_count":26082,"quote_count":2797,"retweet_count":11786}},{"date_time_pulled":"2022-05-18T12:48:51.280","data":{"like_count":81035,"reply_count":26170,"quote_count":2813,"retweet_count":11849}},{"date_time_pulled":"2022-05-18T12:51:54.027","data":{"like_count":81112,"reply_count":26192,"quote_count":2814,"retweet_count":11855}},{"date_time_pulled":"2022-05-18T12:55:48.287","data":{"like_count":81225,"reply_count":26203,"quote_count":2809,"retweet_count":11865}},{"date_time_pulled":"2022-05-18T12:59:40.986","data":{"like_count":81324,"reply_count":26234,"quote_count":2818,"retweet_count":11871}},{"date_time_pulled":"2022-05-18T13:03:03.753","data":{"like_count":81433,"reply_count":26246,"quote_count":2816,"retweet_count":11882}},{"date_time_pulled":"2022-05-18T13:04:21.276","data":{"like_count":81475,"reply_count":26253,"quote_count":2822,"retweet_count":11888}},{"date_time_pulled":"2022-05-18T13:06:07.972","data":{"like_count":81534,"reply_count":26258,"quote_count":2817,"retweet_count":11890}},{"date_time_pulled":"2022-05-18T13:08:32.867","data":{"like_count":81616,"reply_count":26278,"quote_count":2825,"retweet_count":11898}},{"date_time_pulled":"2022-05-18T13:10:20.578","data":{"like_count":81661,"reply_count":26290,"quote_count":2825,"retweet_count":11898}},{"date_time_pulled":"2022-05-18T13:11:56.918","data":{"like_count":81714,"reply_count":26307,"quote_count":2827,"retweet_count":11901}},{"date_time_pulled":"2022-05-18T13:13:44.448","data":{"like_count":81771,"reply_count":26317,"quote_count":2829,"retweet_count":11906}},{"date_time_pulled":"2022-05-18T14:27:47.994","data":{"like_count":83888,"reply_count":26707,"quote_count":2879,"retweet_count":12124}},{"date_time_pulled":"2022-05-18T20:07:21.746","data":{"like_count":90917,"reply_count":27961,"quote_count":3015,"retweet_count":12987}},{"date_time_pulled":"2022-05-18T20:09:13.354","data":{"like_count":90950,"reply_count":27968,"quote_count":3016,"retweet_count":12990}}],"id":"1526598807722549248"},{"data":[{"date_time_pulled":"2022-05-18T09:01:59.378","data":{"like_count":84565,"reply_count":6762,"quote_count":739,"retweet_count":6640}},{"date_time_pulled":"2022-05-18T09:03:24.092","data":{"like_count":84646,"reply_count":6761,"quote_count":740,"retweet_count":6645}},{"date_time_pulled":"2022-05-18T09:03:31.925","data":{"like_count":84662,"reply_count":6761,"quote_count":740,"retweet_count":6645}},{"date_time_pulled":"2022-05-18T09:03:36.021","data":{"like_count":84672,"reply_count":6761,"quote_count":740,"retweet_count":6646}},{"date_time_pulled":"2022-05-18T09:12:27.806","data":{"like_count":85316,"reply_count":6779,"quote_count":741,"retweet_count":6695}},{"date_time_pulled":"2022-05-18T09:19:26.661","data":{"like_count":85785,"reply_count":6800,"quote_count":743,"retweet_count":6727}},{"date_time_pulled":"2022-05-18T10:47:18.696","data":{"like_count":90850,"reply_count":6997,"quote_count":757,"retweet_count":7010}},{"date_time_pulled":"2022-05-18T10:49:12.961","data":{"like_count":91001,"reply_count":7003,"quote_count":761,"retweet_count":7019}},{"date_time_pulled":"2022-05-18T10:53:16.047","data":{"like_count":91234,"reply_count":7018,"quote_count":762,"retweet_count":7030}},{"date_time_pulled":"2022-05-18T10:55:11.390","data":{"like_count":91344,"reply_count":7020,"quote_count":762,"retweet_count":7038}},{"date_time_pulled":"2022-05-18T10:55:20.074","data":{"like_count":91352,"reply_count":7019,"quote_count":762,"retweet_count":7038}},{"date_time_pulled":"2022-05-18T10:58:14.125","data":{"like_count":91490,"reply_count":7025,"quote_count":762,"retweet_count":7047}},{"date_time_pulled":"2022-05-18T11:00:45.018","data":{"like_count":91618,"reply_count":7031,"quote_count":763,"retweet_count":7055}},{"date_time_pulled":"2022-05-18T11:03:57.606","data":{"like_count":91802,"reply_count":7038,"quote_count":764,"retweet_count":7060}},{"date_time_pulled":"2022-05-18T11:06:19.331","data":{"like_count":91897,"reply_count":7047,"quote_count":764,"retweet_count":7066}},{"date_time_pulled":"2022-05-18T11:07:45.614","data":{"like_count":91989,"reply_count":7050,"quote_count":762,"retweet_count":7071}},{"date_time_pulled":"2022-05-18T11:09:08.343","data":{"like_count":92083,"reply_count":7053,"quote_count":764,"retweet_count":7076}},{"date_time_pulled":"2022-05-18T11:10:29.765","data":{"like_count":92138,"reply_count":7055,"quote_count":764,"retweet_count":7077}},{"date_time_pulled":"2022-05-18T11:14:34.285","data":{"like_count":92315,"reply_count":7059,"quote_count":763,"retweet_count":7088}},{"date_time_pulled":"2022-05-18T11:19:51.518","data":{"like_count":92594,"reply_count":7074,"quote_count":766,"retweet_count":7103}},{"date_time_pulled":"2022-05-18T11:20:15.758","data":{"like_count":92638,"reply_count":7076,"quote_count":768,"retweet_count":7104}},{"date_time_pulled":"2022-05-18T11:22:51.398","data":{"like_count":92732,"reply_count":7080,"quote_count":766,"retweet_count":7109}},{"date_time_pulled":"2022-05-18T11:24:26.534","data":{"like_count":92838,"reply_count":7079,"quote_count":768,"retweet_count":7116}},{"date_time_pulled":"2022-05-18T11:26:48.299","data":{"like_count":92938,"reply_count":7084,"quote_count":768,"retweet_count":7118}},{"date_time_pulled":"2022-05-18T11:32:56.907","data":{"like_count":93214,"reply_count":7094,"quote_count":767,"retweet_count":7136}},{"date_time_pulled":"2022-05-18T11:34:22.310","data":{"like_count":93302,"reply_count":7096,"quote_count":767,"retweet_count":7145}},{"date_time_pulled":"2022-05-18T11:36:06.449","data":{"like_count":93429,"reply_count":7101,"quote_count":769,"retweet_count":7154}},{"date_time_pulled":"2022-05-18T11:37:22.053","data":{"like_count":93494,"reply_count":7104,"quote_count":770,"retweet_count":7159}},{"date_time_pulled":"2022-05-18T11:40:10.828","data":{"like_count":93665,"reply_count":7107,"quote_count":772,"retweet_count":7173}},{"date_time_pulled":"2022-05-18T12:03:05.421","data":{"like_count":94766,"reply_count":7161,"quote_count":778,"retweet_count":7251}},{"date_time_pulled":"2022-05-18T12:05:18.875","data":{"like_count":94900,"reply_count":7166,"quote_count":781,"retweet_count":7259}},{"date_time_pulled":"2022-05-18T12:14:35.220","data":{"like_count":95300,"reply_count":7197,"quote_count":781,"retweet_count":7288}},{"date_time_pulled":"2022-05-18T12:16:19.978","data":{"like_count":95387,"reply_count":7197,"quote_count":781,"retweet_count":7293}},{"date_time_pulled":"2022-05-18T12:19:41.233","data":{"like_count":95535,"reply_count":7201,"quote_count":785,"retweet_count":7299}},{"date_time_pulled":"2022-05-18T12:22:31.478","data":{"like_count":95662,"reply_count":7213,"quote_count":785,"retweet_count":7307}},{"date_time_pulled":"2022-05-18T12:25:15.060","data":{"like_count":95776,"reply_count":7219,"quote_count":783,"retweet_count":7317}},{"date_time_pulled":"2022-05-18T12:32:18.893","data":{"like_count":96083,"reply_count":7232,"quote_count":784,"retweet_count":7329}},{"date_time_pulled":"2022-05-18T12:34:24.863","data":{"like_count":96165,"reply_count":7236,"quote_count":784,"retweet_count":7333}},{"date_time_pulled":"2022-05-18T12:48:51.280","data":{"like_count":96788,"reply_count":7256,"quote_count":789,"retweet_count":7363}},{"date_time_pulled":"2022-05-18T12:51:54.027","data":{"like_count":96924,"reply_count":7260,"quote_count":789,"retweet_count":7364}},{"date_time_pulled":"2022-05-18T12:55:48.287","data":{"like_count":97090,"reply_count":7265,"quote_count":788,"retweet_count":7371}},{"date_time_pulled":"2022-05-18T12:59:40.986","data":{"like_count":97198,"reply_count":7273,"quote_count":793,"retweet_count":7380}},{"date_time_pulled":"2022-05-18T13:03:03.753","data":{"like_count":97342,"reply_count":7280,"quote_count":791,"retweet_count":7385}},{"date_time_pulled":"2022-05-18T13:04:21.276","data":{"like_count":97374,"reply_count":7280,"quote_count":794,"retweet_count":7391}},{"date_time_pulled":"2022-05-18T13:06:07.972","data":{"like_count":97457,"reply_count":7281,"quote_count":792,"retweet_count":7393}},{"date_time_pulled":"2022-05-18T13:08:32.867","data":{"like_count":97544,"reply_count":7290,"quote_count":794,"retweet_count":7400}},{"date_time_pulled":"2022-05-18T13:10:20.578","data":{"like_count":97611,"reply_count":7295,"quote_count":795,"retweet_count":7404}},{"date_time_pulled":"2022-05-18T13:11:56.918","data":{"like_count":97667,"reply_count":7296,"quote_count":795,"retweet_count":7406}},{"date_time_pulled":"2022-05-18T13:13:44.448","data":{"like_count":97721,"reply_count":7298,"quote_count":795,"retweet_count":7408}},{"date_time_pulled":"2022-05-18T14:27:47.994","data":{"like_count":100104,"reply_count":7405,"quote_count":805,"retweet_count":7537}},{"date_time_pulled":"2022-05-18T20:07:21.746","data":{"like_count":108802,"reply_count":7726,"quote_count":834,"retweet_count":7932}},{"date_time_pulled":"2022-05-18T20:09:13.354","data":{"like_count":108849,"reply_count":7728,"quote_count":834,"retweet_count":7937}}],"id":"1526636363906437120"}]);
         })
 
     </script>
 
     <style>
-
+        .special{
+            border: black solid 1px;
+            border-radius: 10px;
+            background-color: #a6b7c5;
+        }
         .chart{
             min-width: 350px;
         }
@@ -563,6 +560,7 @@
         .canvas-container{
             overflow: auto;
             max-height: 500px;
+
         }
         #trackChart{
 
@@ -573,6 +571,13 @@
         #main-trackChart-container{
             width: fit-content;
             margin: auto;
+            margin-top: 10px;
+        }
+        .decorate-container{
+            padding: 10px;
+            border: black 1px solid;
+            border-radius: 10px;
+            background-color: #a6b7c5;
         }
     </style>
 
@@ -586,65 +591,73 @@
         <div id="charts">
             <div class="row">
                 <div class="col-sm-6 col-xl-3 canvas-container">
-                    <select id="mychart-dropdown" onchange="selectChart('domain_frequency',value,'myChart','chart1-table')">
-                        <option value="doughnut" >Doughnut</option>
-                        <option value="polarArea"> Polar Area</option>
-                        <option value="radar">Radar</option>
-                        <option value="wordCloud">WordCloud</option>
-                        <option value="raw">Raw</option>
-                        <option selected hidden>Select chart</option>
-                    </select>
-                    <table id="chart1-table" class="chart-table"></table>
-                    <div id = "chart-container1" class="chart" style="position: relative;">
-                        <canvas id="myChart"></canvas>
+                    <div class="decorate-container">
+                        <select id="mychart-dropdown" onchange="selectChart('domain_frequency',value,'myChart','chart1-table')">
+                            <option value="doughnut" >Doughnut</option>
+                            <option value="polarArea"> Polar Area</option>
+                            <option value="radar">Radar</option>
+                            <option value="wordCloud">WordCloud</option>
+                            <option value="raw">Raw</option>
+                            <option selected hidden>Select chart</option>
+                        </select>
+                        <table id="chart1-table" class="chart-table"></table>
+                        <div id = "chart-container1" class="chart" style="position: relative;">
+                            <canvas id="myChart"></canvas>
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-xl-3 canvas-container">
-                    <select id="mychart2-dropdown" onchange="selectChart('entity_frequency',value,'myChart2','chart2-table')">
-                        <option value="doughnut" >Doughnut</option>
-                        <option value="polarArea"> Polar Area</option>
-                        <option value="radar">Radar</option>
-                        <option value="wordCloud">WordCloud</option>
-                        <option value="raw">Raw</option>
-                        <option selected hidden>Select chart</option>
-                    </select>
-                    <table id="chart2-table" class="chart-table"></table>
-                    <div id = "chart-container2" class="chart" style="position: relative;">
-                        <canvas id="myChart2"></canvas>
+                    <div class="decorate-container">
+                        <select id="mychart2-dropdown" onchange="selectChart('entity_frequency',value,'myChart2','chart2-table')">
+                            <option value="doughnut" >Doughnut</option>
+                            <option value="polarArea"> Polar Area</option>
+                            <option value="radar">Radar</option>
+                            <option value="wordCloud">WordCloud</option>
+                            <option value="raw">Raw</option>
+                            <option selected hidden>Select chart</option>
+                        </select>
+                        <table id="chart2-table" class="chart-table"></table>
+                        <div id = "chart-container2" class="chart" style="position: relative;">
+                            <canvas id="myChart2"></canvas>
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-xl-3 canvas-container">
-                    <select id="mychart3-dropdown" onchange="selectChart('hashtag_frequency',value,'myChart3','chart3-table')">
-                        <option value="doughnut" >Doughnut</option>
-                        <option value="polarArea"> Polar Area</option>
-                        <option value="radar">Radar</option>
-                        <option value="wordCloud">WordCloud</option>
-                        <option value="raw">Raw</option>
-                        <option selected hidden>Select chart</option>
-                    </select>
-                    <table id="chart3-table" class="chart-table"></table>
-                    <div id = "chart-container3" class="chart" style="position: relative;">
-                        <canvas id="myChart3"></canvas>
+                    <div class="decorate-container">
+                        <select id="mychart3-dropdown" onchange="selectChart('hashtag_frequency',value,'myChart3','chart3-table')">
+                            <option value="doughnut" >Doughnut</option>
+                            <option value="polarArea"> Polar Area</option>
+                            <option value="radar">Radar</option>
+                            <option value="wordCloud">WordCloud</option>
+                            <option value="raw">Raw</option>
+                            <option selected hidden>Select chart</option>
+                        </select>
+                        <table id="chart3-table" class="chart-table"></table>
+                        <div id = "chart-container3" class="chart" style="position: relative;">
+                            <canvas id="myChart3"></canvas>
+                        </div>
                     </div>
                 </div>
                 <div class="col-sm-6 col-xl-3 canvas-container">
-                    <select id="mychart4-dropdown" onchange="selectChart('mention_frequency',value,'myChart4','chart4-table')">
-                        <option value="doughnut" >Doughnut</option>
-                        <option value="polarArea"> Polar Area</option>
-                        <option value="radar">Radar</option>
-                        <option value="wordCloud">WordCloud</option>
-                        <option value="raw">Raw</option>
-                        <option selected hidden>Select chart</option>
-                    </select>
-                    <table id="chart4-table" class="chart-table"></table>
-                    <div id = "chart-container4" class="chart" style="position: relative;">
-                        <canvas id="myChart4"></canvas>
+                    <div class="decorate-container">
+                        <select id="mychart4-dropdown" onchange="selectChart('mention_frequency',value,'myChart4','chart4-table')">
+                            <option value="doughnut" >Doughnut</option>
+                            <option value="polarArea"> Polar Area</option>
+                            <option value="radar">Radar</option>
+                            <option value="wordCloud">WordCloud</option>
+                            <option value="raw">Raw</option>
+                            <option selected hidden>Select chart</option>
+                        </select>
+                        <table id="chart4-table" class="chart-table"></table>
+                        <div id = "chart-container4" class="chart" style="position: relative;">
+                            <canvas id="myChart4"></canvas>
+                        </div>
                     </div>
                 </div>
-                <div id="main-trackChart-container" class="col-sm-12 col-xl-8 canvas-container">
+                <div style="margin-bottom: 10px;" id="main-trackChart-container" class="col-sm-12 col-xl-8 canvas-container decorate-container">
                     <div><input type="text" id="trackID" placeholder="Type Id to track">
                         <button onclick="getTrackId('trackID', 'trackChart')">Track</button>
-                        <button onclick="removeChart()">Remove</button>
+
                     </div>
                     <div id = "chart-container5" class="chart" style="position: relative;">
                         <canvas id="trackChart"></canvas>
@@ -656,9 +669,10 @@
             </div>
         </div>
     </section>
-    <div><button onclick="addTrackChart();">Add Track Chart</button></div>
-    <div><button onclick="resetCharts()">Reset</button></div>
-    <div><button onclick="removeChart()">Remove</button></div>
+    <div id="button ">
+        <div><button onclick="addTrackChart();">Add Track Chart</button></div>
+
+    </div>
     <section>
         <div id="tweets">
         </div>

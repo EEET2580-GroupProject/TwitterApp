@@ -46,7 +46,7 @@ public class ApplicationConfig extends WebMvcConfigurationSupport {
     @Override
     protected void configureAsyncSupport(AsyncSupportConfigurer configurer) {
         configurer.setTaskExecutor(mvcTaskExecutor());
-        configurer.setDefaultTimeout(90000);
+        configurer.setDefaultTimeout(120000);
     }
 
     @Bean

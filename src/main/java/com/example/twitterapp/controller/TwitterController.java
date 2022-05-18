@@ -40,8 +40,8 @@ public class TwitterController {
 
     @GetMapping("/twitter/connectStream")
     public Callable<String> getTweet(@RequestParam(value="q-max") int maxTweet,SearchHistory history, Model model, @SessionAttribute("login") Login login, RedirectAttributes re){
-        User user = userRepository.searchByName(login.getUsername());
-        model.addAttribute("username",user.getUsername());
+        User user = userRepository.searchByName(login.getEmail());
+        model.addAttribute("username",user.getEmail());
 
         int max = maxTweet;
         if (maxTweet > 40){
@@ -98,8 +98,8 @@ public class TwitterController {
                                           RedirectAttributes re) throws IOException,
                                             URISyntaxException {
 
-        User user = userRepository.searchByName(login.getUsername());
-        model.addAttribute("username",user.getUsername());
+        User user = userRepository.searchByName(login.getEmail());
+        model.addAttribute("username",user.getEmail());
 
         System.out.println("In twitter Search");
         System.out.println("Async enabled: "+ request.isAsyncSupported());
@@ -148,7 +148,7 @@ public class TwitterController {
                 searchRepository.save(history);
 
                 re.addFlashAttribute("query", "Query: "+ query.trim());
-                re.addFlashAttribute("report", "Create rules successfully");
+                re.addFlashAttribute("report", "Create rules successfully, Hit Connect Stream if all things are done");
                 return "redirect:/twitter";
             }else {
                 re.addFlashAttribute("report", "Your query is invalid");
@@ -159,8 +159,8 @@ public class TwitterController {
 
     @GetMapping("/twitter/lookupTweet")
     public Callable<String> lookUpTweet(@RequestParam(value = "q-ids") String ids,@RequestParam(value = "q-istrack",required = false) String isTrack,@SessionAttribute("login") Login login, Model model, SearchHistory history, RedirectAttributes re){
-        User user = userRepository.searchByName(login.getUsername());
-        model.addAttribute("username",user.getUsername());
+        User user = userRepository.searchByName(login.getEmail());
+        model.addAttribute("username",user.getEmail());
         return ()->{
 
             JSONObject jsonObject = new JSONObject();
@@ -218,8 +218,8 @@ public class TwitterController {
 
     @GetMapping("/twitter/getRecent")
     public Callable<String> getRecent(@RequestParam(value = "q-query") String query, Model model, @SessionAttribute("login") Login login, SearchHistory history){
-        User user = userRepository.searchByName(login.getUsername());
-        model.addAttribute("username",user.getUsername());
+        User user = userRepository.searchByName(login.getEmail());
+        model.addAttribute("username",user.getEmail());
         return ()->{
             JSONObject jsonObject = new JSONObject();
             try {

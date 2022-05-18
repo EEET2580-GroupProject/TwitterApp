@@ -11,7 +11,7 @@ public class LoginSessionController {
     @PostMapping("/loginsession")
     public String getUserProfile(@SessionAttribute("login") Login login, Model model){
         System.out.println("Welcome user");
-        model.addAttribute("username",login.getUsername());
+        model.addAttribute("username",login.getEmail());
         return "session";
     }
 }

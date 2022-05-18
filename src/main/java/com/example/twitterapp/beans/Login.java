@@ -4,6 +4,15 @@ public class Login {
     private Integer user_id;
     private String username;
     private String password;
+    private String email;
+
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    public String getEmail() {
+        return email;
+    }
 
     public Integer getUser_id() {
         return user_id;
