@@ -409,6 +409,11 @@
             background-color: #F0E5CF;
             height: 100vh;
         }
+        .decorate-tweet-container{
+            width: fit-content;
+            margin:auto;
+            margin-top: 10px;
+        }
     </style>
 
 </head>
@@ -487,12 +492,12 @@
                 </div>
             </div>
         </section>
-        <section>
+        <div class="decorate-tweet-container">
             <div id="tweets">
             </div>
             <div id="tweet-pagination">
             </div>
-        </section>
+        </div >
     </main>
 </body>
 </html>
