@@ -13,6 +13,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.servlet.http.HttpServletRequest;
 import java.io.IOException;
@@ -38,7 +39,7 @@ public class TwitterController {
 
 
     @GetMapping("/twitter/connectStream")
-    public Callable<String> getTweet(@RequestParam(value="q-max") int maxTweet,SearchHistory history, Model model, @SessionAttribute("login") Login login){
+    public Callable<String> getTweet(@RequestParam(value="q-max") int maxTweet,SearchHistory history, Model model, @SessionAttribute("login") Login login, RedirectAttributes re){
         User user = userRepository.searchByName(login.getUsername());
         model.addAttribute("username",user.getUsername());
 
@@ -51,6 +52,15 @@ public class TwitterController {
         int finalMax = max;
         return ()->{
             JSONObject jsonObject = new JSONObject();
+
+            try{
+                if(!tweetSearchService.hasRules()){
+                    re.addFlashAttribute("report", "No rules have been set");
+                    return "redirect:/twitter";
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
             try {
                 jsonObject = tweetAnalyzeService.transform(null, tweetSearchService.getTweet(finalMax));
             }catch (NullPointerException n){
@@ -84,7 +94,8 @@ public class TwitterController {
                                           @RequestParam(value="q-language",required=false) String language,
                                           @RequestParam(value="q-tag") String tag,
                                           SearchHistory history, @SessionAttribute("login") Login login,
-                                          Model model, HttpServletRequest request) throws IOException,
+                                          Model model, HttpServletRequest request,
+                                          RedirectAttributes re) throws IOException,
                                             URISyntaxException {
 
         User user = userRepository.searchByName(login.getUsername());
@@ -136,25 +147,26 @@ public class TwitterController {
                 history.setDate_time(localDateTime);
                 searchRepository.save(history);
 
-                model.addAttribute("query", "Query: "+ query.trim());
-                model.addAttribute("report", "Create rules successfully");
+                re.addFlashAttribute("query", "Query: "+ query.trim());
+                re.addFlashAttribute("report", "Create rules successfully");
+                return "redirect:/twitter";
             }else {
-                model.addAttribute("report", "Your query is invalid");
+                re.addFlashAttribute("report", "Your query is invalid");
             }
-            return "twittersearch";
+            return "redirect:/twitter";
         };
     }
 
     @GetMapping("/twitter/lookupTweet")
-    public Callable<String> lookUpTweet(@RequestParam(value = "q-ids") String ids,@RequestParam(value = "q-istrack",required = false) String isTrack,@SessionAttribute("login") Login login, Model model, SearchHistory history){
+    public Callable<String> lookUpTweet(@RequestParam(value = "q-ids") String ids,@RequestParam(value = "q-istrack",required = false) String isTrack,@SessionAttribute("login") Login login, Model model, SearchHistory history, RedirectAttributes re){
         User user = userRepository.searchByName(login.getUsername());
         model.addAttribute("username",user.getUsername());
         return ()->{
 
             JSONObject jsonObject = new JSONObject();
             if (ids.isEmpty()){
-                model.addAttribute("report", "Please enter something");
-                return "twittersearch";
+                re.addFlashAttribute("report", "Please enter something");
+                return "redirect:/twitter";
             }
             /*
             try {

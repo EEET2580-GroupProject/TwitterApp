@@ -170,7 +170,7 @@
         <div >
             <nav>
                 <ul>
-                    <li class="icon-container"><a href="/twitter">
+                    <li class="icon-container"><a href="/twitter/resetrules">
                         <div><img id = "twiter-icon"class="icons" src="images/Icons/Twitter.png" alt="Twitter icon"></div>
                     </a></li>
                     <li class="icon-container"><a href="/reddit">

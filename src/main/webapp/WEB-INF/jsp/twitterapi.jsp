@@ -249,28 +249,28 @@
             let pagination = '<nav>'+
                 '<ul id="page-list" class="pagination justify-content-center">'+
                 '<li class="page-item">'+
-                '<a class="page-link" onclick="dynamicTableInsert('+ pre +')" tabindex="-1">Previous</a>'+
+                '<a class="page-link" onclick="dynamicTableInsert('+ pre +',\'add\')" tabindex="-1">Previous</a>'+
                 '</li>'+
                 '</ul>'+
                 '</nav>';
-                document.querySelector("#tweet-pagination").innerHTML = pagination;
+            document.querySelector("#tweet-pagination").innerHTML = pagination;
 
-                let data = ${data};
-                let dataSize = data.sorted_tweet.length;
-                let pageNum = (dataSize / 10) + 1;
+            let data = ${data};
+            let dataSize = data.sorted_tweet.length;
+            let pageNum = (dataSize / 10) + 1;
 
-                var ul = document.querySelector("#page-list");
-                for(let i = 0; i < pageNum-1; i++){
-                    let li = document.createElement("li");
-                    li.innerHTML = '<a class="page-link" onclick="dynamicTableInsert('+i+')">'+i+'</a>';
-                    ul.appendChild(li);
-                }
-                let next = currentPage +1;
+            var ul = document.querySelector("#page-list");
+            for(let i = 0; i < pageNum-1; i++){
                 let li = document.createElement("li");
-                li.innerHTML = '<li class="page-item">'+
-                    '<a class="page-link" onclick="dynamicTableInsert('+ next +')" >Next </a>'+
-                    '</li>';
+                li.innerHTML = '<a class="page-link" onclick="dynamicTableInsert('+i+',\'index\')">'+i+'</a>';
                 ul.appendChild(li);
+            }
+            let next = currentPage +1;
+            let li = document.createElement("li");
+            li.innerHTML = '<li class="page-item">'+
+                '<a class="page-link" onclick="dynamicTableInsert('+ next +',\'add\')" >Next </a>'+
+                '</li>';
+            ul.appendChild(li);
         }
 
         function tweetTable(){
@@ -288,22 +288,32 @@
             dynamicTableInsert(0);
         }
 
-        function dynamicTableInsert(index){
+        function dynamicTableInsert(index,type){
             try{
+
                 let data = ${data};
                 let dataSize = data.sorted_tweet.length;
-                let pageNum = (dataSize / 10) + 1;
+                let pageNum = Math.floor((dataSize / 10)) + 1;
+                let tempIndex = index;
+                let start =0;
+                let end = 0;
+                if(type === "add"){
+                    currentPage = currentPage + (tempIndex);
+                    index = currentPage;
+
+                }
 
                 if(index < 0){
                     index = 0;
+                    currentPage =0;
                 }
-                if(index > pageNum){
-                    index = pageNum;
+                if(index > pageNum-1){
+                    index = pageNum-1;
+                    currentPage = pageNum-1;
                 }
-                currentPage = index;
-
-                let start = index*10;
-                let end = index*10 + 10;
+                //console.log(index);
+                start = index*10;
+                end = index*10 + 10;
                 if(end > dataSize){
                     end = index*10 + (dataSize % 10);
                 }
@@ -326,6 +336,7 @@
 
             }
         }
+
 
         document.addEventListener("DOMContentLoaded", function (){
             console.log(${data});

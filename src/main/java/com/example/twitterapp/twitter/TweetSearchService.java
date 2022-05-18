@@ -16,5 +16,7 @@ public interface TweetSearchService {
 
     public String modifyString(String mode,String modifier, String str);
 
+
     public JSONObject getTweets(String query, String type) throws IOException, URISyntaxException;
+    public boolean hasRules() throws URISyntaxException, IOException;
 }

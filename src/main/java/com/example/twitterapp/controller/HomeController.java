@@ -56,16 +56,31 @@ public class HomeController {
         return "register";
     }
 
+    @GetMapping("/twitter/resetrules")
+    public String resetRules(Model model, @SessionAttribute("login") Login login, SearchHistory history) throws URISyntaxException, IOException{
+        System.out.println("Twitter reset");
+        System.out.println("Deleted all rules");
+        tweetSearchService.deleteAllRules();
+        User user = userRepository.searchByName(login.getUsername());
+        model.addAttribute("username",user.getUsername());
+
+
+        ArrayList<SearchHistory> recentTweetHistory = searchRepository.searchHistoriesByID("recent", user.getId());
+        ArrayList<SearchHistory> lookUpTweetHistory = searchRepository.searchHistoriesByID("lookup",user.getId());
+        ArrayList<SearchHistory> advancedTweetHistory = searchRepository.searchHistoriesByID("stream",user.getId());
+
+        JSONObject searchHistory = tweetAnalyzeService.mapHistory2JSON(recentTweetHistory, lookUpTweetHistory, advancedTweetHistory);
+        model.addAttribute("historyData", searchHistory);
+
+        return "twittersearch";
+    }
+
     @GetMapping("/twitter")
     public String goToTwitterAPI(Model model, @SessionAttribute("login") Login login, SearchHistory history) throws URISyntaxException, IOException {
 
         try {
             User user = userRepository.searchByName(login.getUsername());
             model.addAttribute("username",user.getUsername());
-
-            System.out.println("Twitter Port");
-            System.out.println("Deleted all rules");
-            tweetSearchService.deleteAllRules();
 
             ArrayList<SearchHistory> recentTweetHistory = searchRepository.searchHistoriesByID("recent", user.getId());
             ArrayList<SearchHistory> lookUpTweetHistory = searchRepository.searchHistoriesByID("lookup",user.getId());

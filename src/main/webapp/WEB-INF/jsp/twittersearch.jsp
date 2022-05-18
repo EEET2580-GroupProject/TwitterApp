@@ -7,7 +7,50 @@
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" integrity="sha512-9usAa10IRO0HhonpyAIVpjrylPvoDwiPUiKdWk5t3PyolY1cOd4DSE0Ga+ri4AuTroPR5aQvXU9xC6qOPnzFeg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-    <script>
+    <script type="text/javascript">
+        function processHistory(){
+            try{
+            let historyJson = ${historyData};
+            let lookupLen = historyJson.lookup_history.length;
+            for (let i = 0; i < lookupLen; i++){
+                let searchTerm = historyJson.lookup_history[i].search_term;
+                let date = historyJson.lookup_history[i].date;
+                let atTime = historyJson.lookup_history[i].time;
+                insertNewRow("lookup-history-table", searchTerm, date, atTime);
+            }
+
+            let recentLen = historyJson.recent_history.length;
+            for (let i = 0; i < recentLen; i++){
+                let searchTerm = historyJson.recent_history[i].search_term;
+                let date = historyJson.recent_history[i].date;
+                let atTime = historyJson.recent_history[i].time;
+                insertNewRow("recent-history-table", searchTerm, date, atTime);
+            }
+
+            let advancedLen = historyJson.advanced_history.length;
+            for (let i = 0; i < advancedLen; i++){
+                let searchTerm = historyJson.advanced_history[i].search_term;
+                let date = historyJson.advanced_history[i].date;
+                let atTime = historyJson.advanced_history[i].time;
+                insertNewRow("advanced-history-table", searchTerm, date, atTime);
+            }
+            }catch (err){
+                console.log(err);
+            }
+        }
+
+        function insertNewRow(tableId, term, date, time) {
+            let table = document.getElementById(tableId);
+            let row = table.insertRow(1);
+            row.className = "history-row";
+            let termCell = row.insertCell(0);
+            let dateCell = row.insertCell(1);
+            let timeCell = row.insertCell(2)
+
+            termCell.innerHTML = term;
+            dateCell.innerHTML = date;
+            timeCell.innerHTML = time;
+        }
         function changeToRecentTab(){
             document.getElementById("lookup-search-tab").style.display = "none";
             document.getElementById("advanced-search-tab").style.display = "none";
@@ -50,52 +93,9 @@
             lookupStyle.color = "black";
             advancedStyle.backgroundColor = "#525E75";
             advancedStyle.color = "white";
-
-        }
-
-        function processHistory(){
-            let historyJson = ${historyData};
-            let lookupLen = historyJson.lookup_history.length;
-            for (let i = 0; i < lookupLen; i++){
-                let searchTerm = historyJson.lookup_history[i].search_term;
-                let date = historyJson.lookup_history[i].date;
-                let atTime = historyJson.lookup_history[i].time;
-                insertNewRow("lookup-history-table", searchTerm, date, atTime);
-            }
-
-            let recentLen = historyJson.recent_history.length;
-            for (let i = 0; i < recentLen; i++){
-                let searchTerm = historyJson.recent_history[i].search_term;
-                let date = historyJson.recent_history[i].date;
-                let atTime = historyJson.recent_history[i].time;
-                insertNewRow("recent-history-table", searchTerm, date, atTime);
-            }
-
-            let advancedLen = historyJson.advanced_history.length;
-            for (let i = 0; i < advancedLen; i++){
-                let searchTerm = historyJson.advanced_history[i].search_term;
-                let date = historyJson.advanced_history[i].date;
-                let atTime = historyJson.advanced_history[i].time;
-                insertNewRow("advanced-history-table", searchTerm, date, atTime);
-            }
-        }
-
-        function insertNewRow(tableId, term, date, time) {
-            let table = document.getElementById(tableId);
-            let row = table.insertRow(1);
-            row.className = "history-row";
-            let termCell = row.insertCell(0);
-            let dateCell = row.insertCell(1);
-            let timeCell = row.insertCell(2)
-
-            termCell.innerHTML = term;
-            dateCell.innerHTML = date;
-            timeCell.innerHTML = time;
         }
 
         document.addEventListener("DOMContentLoaded", function(){
-            let historyJson = ${historyData};
-            console.log(historyJson);
             processHistory();
         });
     </script>
@@ -227,6 +227,8 @@
 
         .history-container{
             width: fit-content;
+            overflow: auto;
+            max-height: 35vh;
             padding-left: 10px;
             padding-right: 10px;
             margin: 10px auto;

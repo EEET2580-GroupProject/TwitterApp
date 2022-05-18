@@ -135,6 +135,10 @@ public class TweetSearchImpl implements TweetSearchService {
             deleteRules(bearerToken, existingRules);
         }
     }
+    public boolean hasRules() throws URISyntaxException, IOException {
+        List<String> existingRules = getRules(bearerToken);
+        return existingRules.size() > 0;
+    }
 
     /*
      * Helper method to create rules for filtering
