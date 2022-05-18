@@ -256,6 +256,9 @@
         body{
             font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
+        .form-label{
+            width: 100px;
+        }
     </style>
 </head>
 <body>

@@ -7,7 +7,7 @@
                     <input id="term-field" type="text" name="q-term" placeholder="Keywords">
                 </div>
             </div>
-            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+            <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                 <div class="modal-dialog" role="document">
                     <div class="modal-content">
                         <div class="modal-header">
@@ -88,26 +88,26 @@
 
 
                             <input type="checkbox" id="is-retweet" name="q-isretweet" value="/on/">
-                            <label for="is-retweet"> Is retweet</label>
+                            <label for="is-retweet"> Exclude retweet</label>
                             <input type="checkbox" id="is-reply" name="q-isreply" value="/on/">
-                            <label for="is-reply"> Is reply</label>
+                            <label for="is-reply"> Exclude reply</label>
                             <input type="checkbox" id="is-quote" name="q-isquote" value="/on/">
-                            <label for="is-quote"> Is quote</label>
+                            <label for="is-quote"> Exclude quote</label>
                             <input type="checkbox" id="is-verified" name="q-isverified" value="/on/">
                             <label for="is-verified"> From verified account</label>
                             <input type="checkbox" id="has-hashtag" name="q-hashashtag" value="/on/">
-                            <label for="has-hashtag"> Has atleast one hashtag</label>
+                            <label for="has-hashtag"> Exclude hashtag</label>
                             <input type="checkbox" id="has-links" name="q-haslink" value="/on/">
-                            <label for="has-links"> Has links</label>
+                            <label for="has-links"> Exclude links</label>
                             <input type="checkbox" id="has-mentions" name="q-mentions" value="/on/">
-                            <label for="has-mentions"> Has mentions</label>
+                            <label for="has-mentions"> Exclude mentions</label>
                             <input type="checkbox" id="has-media" name="q-media" value="/on/">
-                            <label for="has-media"> Has media</label>
+                            <label for="has-media"> Exclude media</label>
                             <input type="checkbox" id="has-images" name="q-hasimages" value="/on/">
-                            <label for="has-images"> Has images</label>
+                            <label for="has-images"> Exclude images</label>
                             <input type="checkbox" id="has-videos" name="q-hasvideos" value="/on/">
-                            <label for="has-videos"> Has videos</label>
-
+                            <label for="has-videos"> Exclude videos</label><br/>
+                            <label >Language</label>
                             <select id="language" class="inputs" name="q-language">
                                 <option value=af>Afrikaans</option>
                                 <option value=sq>Albanian</option>
@@ -241,7 +241,7 @@
                                 </div>
                                 <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                    <button type="submit" form="connect-form" class="btn btn-primary">Save changes</button>
+                                    <button type="submit" form="connect-form" onclick="alert('It will take a while please be patient')" class="btn btn-primary">Save changes</button>
                                 </div>
                             </div>
                         </div>
@@ -249,7 +249,7 @@
                 </form>
                 <button class="button-ele" data-toggle="modal" data-target="#modal2" >Connect to Stream</button>
                 <input class="button-ele" form="setrules-form" type="submit" value="Import rules">
-                <button id="advanced-search-button" class="button-ele"  data-toggle="modal" data-target="#exampleModal">Advanced Search</button>
+                <button id="advanced-search-button" class="button-ele"  data-toggle="modal" data-target="#exampleModal1">Advanced Search</button>
             </div>
         </div>
     </div>
