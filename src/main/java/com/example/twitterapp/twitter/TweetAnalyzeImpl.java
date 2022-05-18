@@ -1,10 +1,12 @@
 package com.example.twitterapp.twitter;
 
 import com.example.twitterapp.beans.SearchHistory;
+import com.example.twitterapp.repository.SearchRepository;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
@@ -13,6 +15,9 @@ import java.util.*;
 @Transactional
 @Service
 public class TweetAnalyzeImpl implements TweetAnalyzeService{
+
+    @Autowired
+    SearchRepository searchRepository;
 
     private String maxLikeCount = "0";
     private String maxReplyCount = "0";
@@ -300,5 +305,142 @@ public class TweetAnalyzeImpl implements TweetAnalyzeService{
             historyArray.put(history);
         }
         return historyArray;
+    }
+
+    @Override
+    public JSONArray sortOldTweetBy(JSONArray data, String sortBy) {
+        JSONArray sorted = new JSONArray();
+        List<JSONObject> tweetList = new ArrayList<>();
+        for (int i = 0; i < data.length(); i++) {
+            tweetList.add(data.getJSONObject(i));
+        }
+
+        Collections.sort(tweetList, new Comparator<JSONObject>() {
+            @Override
+            public int compare(JSONObject o1, JSONObject o2) {
+                String id1 = "";
+                String id2 = "";
+                try{
+                    id1 = (String) o1.get(sortBy);
+                    id2 = (String) o2.get(sortBy);
+                }catch(JSONException e){
+                }
+                return id1.compareTo(id2);
+            }
+        });
+        for(int i = 0; i < tweetList.size(); i++){
+            sorted.put(tweetList.get(i));
+        }
+
+        return sorted;
+    }
+
+    @Override
+    public JSONArray extract4Sorting(JSONArray data, ArrayList<String> dateTime) {
+        JSONArray allOldTweets = new JSONArray();
+        for (int i =0; i<data.length(); i++){
+            JSONObject oldData = (JSONObject) data.get(i);
+            JSONArray oldTweets = (JSONArray) oldData.get("sorted_tweet");
+            JSONObject oldTweetsWithTimePulled = new JSONObject();
+            oldTweetsWithTimePulled.put("date_time_pulled", dateTime.get(i));
+            oldTweetsWithTimePulled.put("data",oldTweets);
+            /*
+            for(int j =0; j<oldTweets.length(); j++){
+                allOldTweets.put(oldTweets.get(j));
+            }
+             */
+            allOldTweets.put(oldTweetsWithTimePulled);
+        }
+        JSONArray allOldTweetsWithTimePulled = new JSONArray();
+        for (int i = 0; i< allOldTweets.length(); i++){
+            JSONObject temp = allOldTweets.getJSONObject(i);
+            JSONArray tempArray = temp.getJSONArray("data");
+            String tempDateTime = temp.getString("date_time_pulled");
+            for(int j =0;j < tempArray.length(); j++) {
+                //JSONObject oldTweetsWithTimePulledIncluded = new JSONObject();
+                //oldTweetsWithTimePulledIncluded.put("date_time_pulled", tempDateTime);
+                JSONObject tempItem = tempArray.getJSONObject(j);
+                tempItem.put("date_time_pulled", tempDateTime);
+                allOldTweetsWithTimePulled.put(tempItem);
+            }
+        }
+
+        return allOldTweetsWithTimePulled;
+    }
+
+    @Override
+    public JSONArray sortOldTweetByDateTime(JSONArray data) {
+        JSONArray sorted = new JSONArray();
+        JSONArray batch = new JSONArray();
+        for (int i =1; i< data.length();i++){
+            JSONObject previousItem = data.getJSONObject(i-1);
+            JSONObject currentItem = data.getJSONObject(i);
+            batch.put(previousItem);
+            if((!previousItem.getString("id").equals(currentItem.getString("id"))) || i == data.length() -1){
+                if(i== data.length()-1){
+                    batch.put(currentItem);
+                }
+                JSONArray batchSorted =  sortOldTweetBy(batch,"date_time_pulled");
+                batch = new JSONArray();
+                for(int j =0; j<batchSorted.length();j++){
+                    sorted.put(batchSorted.get(j));
+                }
+            }
+        }
+        return sorted;
+    }
+
+    @Override
+    public JSONArray constructOldTweetsJSON(JSONArray data) {
+        JSONArray constructed = new JSONArray();
+        JSONArray batch = new JSONArray();
+        for (int i =1; i< data.length();i++){
+            JSONObject previousItem = data.getJSONObject(i-1);
+            JSONObject currentItem = data.getJSONObject(i);
+            JSONObject wrapper = new JSONObject();
+            wrapper.put("date_time_pulled",previousItem.getString("date_time_pulled"));
+            wrapper.put("data",previousItem.get("public_metrics"));
+            batch.put(wrapper);
+            if((!previousItem.getString("id").equals(currentItem.getString("id"))) || i == data.length() -1){
+                //JSONArray batchSorted =  sortOldTweetBy(batch,"date_time_pulled");
+                if(i== data.length()-1){
+                    JSONObject wrapperCurrent = new JSONObject();
+                    wrapperCurrent.put("date_time_pulled",currentItem.getString("date_time_pulled"));
+                    wrapperCurrent.put("data",currentItem.get("public_metrics"));
+                    batch.put(wrapperCurrent);
+                }
+                JSONObject item = new JSONObject();
+                item.put("id", previousItem.getString("id"));
+                item.put("data",batch);
+                constructed.put(item);
+                batch = new JSONArray();
+            }
+        }
+        return constructed;
+    }
+
+    @Override
+    public JSONArray trackData(String searchTerm, Integer userID) {
+        JSONArray trackTweetArray = new JSONArray();
+        ArrayList<SearchHistory> collectionTrackTweets = searchRepository.searchTrackTweet("lookup",searchTerm,userID);
+
+        ArrayList<String> timePulled = new ArrayList<>();
+        ArrayList<JSONObject> colllectionOldTweets = new ArrayList<>();
+        for(SearchHistory s: collectionTrackTweets){
+            JSONObject oldTweets = new JSONObject(s.getSearch_data());
+            String dateTime = s.getDate_time().toString();
+            //System.out.println(oldTweets);
+            colllectionOldTweets.add(oldTweets);
+            timePulled.add(dateTime);
+        }
+        for(JSONObject j : colllectionOldTweets){
+            trackTweetArray.put(j);
+        }
+
+        JSONArray extracted = extract4Sorting(trackTweetArray, timePulled);
+        JSONArray idSorted =  sortOldTweetBy(extracted,"id");
+        JSONArray dateTimeSorted = sortOldTweetByDateTime(idSorted);
+
+        return constructOldTweetsJSON(dateTimeSorted);
     }
 }

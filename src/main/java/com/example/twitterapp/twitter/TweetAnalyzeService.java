@@ -34,4 +34,14 @@ public interface TweetAnalyzeService {
     public JSONObject mapHistory2JSON(ArrayList<SearchHistory> recentTweetHistory, ArrayList<SearchHistory> lookUpTweetHistory, ArrayList<SearchHistory> advancedTweetHistory );
 
     public JSONArray extractHistory(ArrayList<SearchHistory> tweetSearchHistory);
+
+    public JSONArray trackData(String searchTerm, Integer userID);
+
+    public JSONArray extract4Sorting(JSONArray data,ArrayList<String> dateTime);
+
+    public JSONArray sortOldTweetBy(JSONArray data, String sortBy);
+
+    public JSONArray sortOldTweetByDateTime(JSONArray data);
+
+    public JSONArray constructOldTweetsJSON(JSONArray data);
 }

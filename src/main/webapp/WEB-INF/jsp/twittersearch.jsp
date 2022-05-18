@@ -82,7 +82,7 @@
 
         function insertNewRow(tableId, term, date, time) {
             let table = document.getElementById(tableId);
-            let row = table.insertRow(-1);
+            let row = table.insertRow(1);
             row.className = "history-row";
             let termCell = row.insertCell(0);
             let dateCell = row.insertCell(1);
@@ -276,6 +276,10 @@
                             <div id="box-around-input">
                                 <i id="icon" class='fa-solid fa-magnifying-glass'></i>
                                 <input id="term-field" type="text" name="q-ids" placeholder="Tweet IDs">
+                            </div>
+                            <div>
+                                <label for="enable-track"> Enable Tracking</label>
+                                <input type="checkbox" id="enable-track" name="q-istrack" value="true">
                             </div>
                         </div>
                     </form>

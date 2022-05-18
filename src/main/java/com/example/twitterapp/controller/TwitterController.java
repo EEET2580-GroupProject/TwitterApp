@@ -7,6 +7,7 @@ import com.example.twitterapp.repository.SearchRepository;
 import com.example.twitterapp.repository.UserRepository;
 import com.example.twitterapp.twitter.TweetAnalyzeService;
 import com.example.twitterapp.twitter.TweetSearchService;
+import org.json.JSONArray;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -145,15 +146,28 @@ public class TwitterController {
     }
 
     @GetMapping("/twitter/lookupTweet")
-    public Callable<String> lookUpTweet(@RequestParam(value = "q-ids") String ids, Model model, @SessionAttribute("login") Login login, SearchHistory history){
+    public Callable<String> lookUpTweet(@RequestParam(value = "q-ids") String ids,@RequestParam(value = "q-istrack",required = false) String isTrack,@SessionAttribute("login") Login login, Model model, SearchHistory history){
         User user = userRepository.searchByName(login.getUsername());
         model.addAttribute("username",user.getUsername());
         return ()->{
+
             JSONObject jsonObject = new JSONObject();
             if (ids.isEmpty()){
                 model.addAttribute("report", "Please enter something");
                 return "twittersearch";
             }
+            /*
+            try {
+                if (isTrack.equals("true")) {
+                    JSONArray data = tweetAnalyzeService.trackData(ids, user.getId());
+                    model.addAttribute("oldTweets", data);
+                    return "tweetTrack";
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+             */
+
             try {
                 JSONObject tweets = tweetSearchService.getTweets(ids,"ids");
                 System.out.println(tweets);
@@ -161,15 +175,31 @@ public class TwitterController {
             }catch (Exception e){
                 e.printStackTrace();
             }
+
             history.setPort("twitter");
             history.setUser_id(user.getId());
             history.setSearch_term(ids);
             history.setSearch_type("lookup");
             LocalDateTime localDateTime = LocalDateTime.now();
             history.setDate_time(localDateTime);
+            history.setSearch_data(jsonObject.toString());
             searchRepository.save(history);
 
             model.addAttribute("data",jsonObject);
+
+            try {
+                if(isTrack != null) {
+                    if (isTrack.equals("true")) {
+                        JSONArray data = tweetAnalyzeService.trackData(ids, user.getId());
+                        model.addAttribute("oldTweets", data);
+
+                        return "tweetTrack";
+                    }
+                }
+            }catch (Exception e){
+                e.printStackTrace();
+            }
+
             return "twitterapi";
         };
     }

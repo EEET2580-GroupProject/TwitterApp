@@ -12,4 +12,7 @@ import java.util.ArrayList;
 public interface SearchRepository extends CrudRepository<SearchHistory, Integer> {
     @Query("select s from SearchHistory s where s.search_type = :type and s.user_id = :userID")
     ArrayList<SearchHistory> searchHistoriesByID(@Param("type") String searchType, @Param("userID") Integer userID);
+
+    @Query("select s from SearchHistory s where s.search_type =:type and s.search_term =:term and s.user_id = :userID")
+    ArrayList<SearchHistory> searchTrackTweet(@Param("type") String searchType, @Param("term") String searchTerm, @Param("userID") Integer userID);
 }
